@@ -12,6 +12,7 @@ export default function Header() {
                         type="search"
                         name="searchBook"
                         placeholder="Search ebooks, magazines and more..."
+                        maxLength="50"
                     />
                     <ul>
                         <li>
