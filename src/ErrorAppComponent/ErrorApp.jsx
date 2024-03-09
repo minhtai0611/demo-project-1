@@ -4,7 +4,7 @@ export default function ErrorApp() {
     return (
         <>
             <div>
-                <p>Sorry, you navigated to routes that don't exist</p>
+                <p>Sorry, you navigated to routes that do not exist</p>
                 <p>
                     <i>{error.statusText ? error.statusText : error.message}</i>
                 </p>
