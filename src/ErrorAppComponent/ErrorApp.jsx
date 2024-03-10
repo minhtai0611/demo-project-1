@@ -1,13 +1,16 @@
-import { useRouteError } from "react-router-dom";
+import { useRouteError, Link } from "react-router-dom";
 import styled from "./ErrorApp.module.css";
 export default function ErrorApp() {
     const error = useRouteError();
     return (
         <>
-            <div className={styled.div}>
+            <div className={styled.all}>
                 <p>
-                    Sorry, page you looked that doesn&apos;t exist. <br />
-                    <i>Page {error.statusText ? error.statusText : error.message}</i>
+                    <i className={styled.i}>Sorry, page {(error.statusText ? error.statusText : error.message).toLowerCase()} ☹</i>
+                    <br />
+                    <br />
+                    <br />
+                    <Link to="/" className={styled.a}>Return to Home Page</Link>
                 </p>
             </div>
         </>

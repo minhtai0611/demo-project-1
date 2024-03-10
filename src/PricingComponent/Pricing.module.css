@@ -1,24 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Lilita+One&display=swap");
 .all {
   width: 100vw;
-  height: 50vh;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: Lilita One;
   font-weight: 400;
-  color: gold;
-  font-size: 5rem;
   font-style: normal;
+  font-size: 5rem;
+  color: gold;
   text-align: center;
-}
-.a {
-  text-decoration: none;
-  color: lightskyblue;
-  font-size: 4rem;
-  cursor: pointer;
-}
-.i {
-  color: orangered;
-  font-size: 4rem;
 }
