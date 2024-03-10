@@ -1,11 +1,14 @@
 import { useRouteError } from "react-router-dom";
-import ErrorAppCSS from "./ErrorApp.module.css";
+import styled from "./ErrorApp.module.css";
 export default function ErrorApp() {
     const error = useRouteError();
     return (
         <>
-            <div className={ErrorAppCSS.div}>
-                <p>Page {error.statusText ? error.statusText : error.message}</p>
+            <div className={styled.div}>
+                <p>
+                    Sorry, page you looked that doesn&apos;t exist. <br />
+                    <i>Page {error.statusText ? error.statusText : error.message}</i>
+                </p>
             </div>
         </>
     );

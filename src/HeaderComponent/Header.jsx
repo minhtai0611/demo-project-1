@@ -1,31 +1,35 @@
-import LogoBook from "../assets/logo-book.png";
-import HeaderCSS from "./Header.module.css";
+import logo from "../assets/logo-book.png";
+import styled from "./Header.module.css";
 export default function Header() {
     return (
         <>
 
-            <header className={HeaderCSS.header + " " + HeaderCSS.all}>
-                <a href="#" className={HeaderCSS.a}>
-                    <img src={LogoBook} alt="LogoBook" className={HeaderCSS.headerImg} />
+            <header className={styled.header + " " + styled.all}>
+                <a href="#" className={styled.a}>
+                    <img src={logo} alt="logo" className={styled.headerImg} />
                 </a>
-                <nav className={HeaderCSS.headerNavAll}>
-                    <input className={HeaderCSS.headerNavAll + " " + HeaderCSS.headerInput + " " + HeaderCSS.all}
-                        type="search"
-                        name="searchBook"
-                        placeholder="Search ebooks, magazines and more..."
-                        maxLength="50"
-                    />
-                    <ul className={HeaderCSS.headerNavAll + " " + HeaderCSS.ul}>
-                        <li className={HeaderCSS.headerLi + " " + HeaderCSS.headerNavAll}>
-                            <a href="#about" className={HeaderCSS.a + " " + HeaderCSS.all + " " + HeaderCSS.headerNavAll}>About</a>
-                        </li>
-                        <li className={HeaderCSS.headerLi + " " + HeaderCSS.headerNavAll}>
-                            <a href="#price" className={HeaderCSS.a + " " + HeaderCSS.all + " " + HeaderCSS.headerNavAll}>Pricing</a>
-                        </li>
-                        <li className={HeaderCSS.headerLi + " " + HeaderCSS.headerNavAll}>
-                            <a href="#contact" className={HeaderCSS.a + " " + HeaderCSS.all + " " + HeaderCSS.headerNavAll}>Contact</a>
-                        </li>
-                    </ul>
+                <nav className={styled.headerNavAll}>
+                    <div className={styled.headerNavAll + " " + styled.divInput}>
+                        <input className={styled.headerNavAll + " " + styled.headerInput + " " + styled.all}
+                            type="search"
+                            name="searchBook"
+                            placeholder="Search ebooks, magazines and more..."
+                            minLength="5"
+                            maxLength="20"
+                        />
+                        <button type="button" title="button" className={styled.buttonInput + " " + styled.headerNavAll + " " + styled.all}><i className="fa fa-search"></i></button>
+                        <ul className={styled.headerNavAll + " " + styled.ul}>
+                            <li className={styled.headerLi + " " + styled.headerNavAll}>
+                                <a href="#about" className={styled.a + " " + styled.all + " " + styled.headerNavAll}>About</a>
+                            </li>
+                            <li className={styled.headerLi + " " + styled.headerNavAll}>
+                                <a href="#price" className={styled.a + " " + styled.all + " " + styled.headerNavAll}>Pricing</a>
+                            </li>
+                            <li className={styled.headerLi + " " + styled.headerNavAll}>
+                                <a href="#contact" className={styled.a + " " + styled.all + " " + styled.headerNavAll}>Contact</a>
+                            </li>
+                        </ul>
+                    </div>
                 </nav>
             </header>
 
