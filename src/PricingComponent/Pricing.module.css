@@ -42,9 +42,6 @@
   padding: 0 1.5vw 0 1.5vw;
   line-height: 2vw;
 }
-.table tr:nth-last-child(1) td{
-    border-bottom: 0.3vw solid papayawhip;
-}
 .table th:nth-child(1), .table td:nth-child(1){
   background-color:forestgreen;
 }
@@ -54,6 +51,15 @@
 }
 .table th:nth-child(3), .table td:nth-child(3){
   background-color:indigo;
+}
+.table tr:nth-last-child(2) td{
+    border-bottom: 0.3vw solid papayawhip;
+}
+.table tr:nth-last-child(1) td{
+  background-color: transparent;
+  border-left: none;
+  border-right: none;
+  padding-top: 2vw;
 }
 .table button {
   cursor: pointer;
