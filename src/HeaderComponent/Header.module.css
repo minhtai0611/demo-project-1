@@ -8,19 +8,19 @@
 }
 /*------------------------------------*/
 .headerImg {
-  height: 10vw;
-  width: 10vw;
+  height: 7rem;
+  width: 7rem;
   /* margin-right: 2vw;
   margin-left: 1vw; */
 }
 .header {
   position: relative;
-  height: 9vw;
+  height: 7rem;
   display: flex;
   align-items: center;
   text-align: center;
-  justify-content: space-around;
-  background-color:midnightblue;
+  justify-content:flex-start;
+  background-color: midnightblue;
   width: 100vw;
   /* margin-top: 1vw; */
 }
@@ -28,7 +28,7 @@
   display: inline;
 }
 .headerLi {
-  margin: 0 3.5vw 0 3.5vw;
+  margin: 0 2rem 0 2rem;
   /* border-radius: 1vw; */
   outline: none;
   border: none;
@@ -50,23 +50,25 @@
   /* left: 0; */
 }
 .divInput input {
-  width: 42vw;
+  width: 35rem;
   color: black;
-  height: 3.7vw;
+  height: 3rem;
   background-color: papayawhip;
   outline: none;
   border: none;
-  border-radius: 1.5vw 0 0 1.5vw;
+  border-radius: 2rem 0 0 2rem;
   /* padding-right: 1vw; */
+  margin-left: 2rem;
 }
 .divInput button {
-  /* position: absolute; */
-  height: 3.7vw;
+  position: absolute;
+  z-index: 1;
+  height: 3rem;
   background-color: papayawhip;
   outline: none;
   border: none;
   color: black;
-  border-radius: 0 1.5vw 1.5vw 0;
+  border-radius: 0 2rem 2rem 0;
   cursor: pointer;
 }
 .divInput ul {
@@ -74,3 +76,4 @@
   /* bottom: 1vw; */
   cursor: pointer;
 }
+

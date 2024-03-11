@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Lilita+One&display=swap");
 .all {
   width: 100vw;
-  height: 30vh;
+  height: 20rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,9 +19,9 @@
 }
 .p {
   color: papayawhip;
-  font-size: 2.3rem;
+  font-size: 2.5rem;
   text-align: justify;
-  margin: -5vw 14vw;
+  margin: -5rem 10rem;
 }
 
 /* .div .ul {
@@ -52,12 +52,11 @@
 
 .table th {
   text-align: center;
-  padding-top: 1vw;
-  font-size: 1.8rem;
+  font-size: 2rem;
 }
 .table td {
-  font-size: 1.3rem;
-  padding: 0 1.5vw 0 1.5vw;
-  line-height: 1.6vw;
+  font-size: 1.5rem;
+  padding: 0 2rem 0 2rem;
+  line-height: 2rem;
 }
 
