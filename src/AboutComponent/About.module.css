@@ -24,7 +24,7 @@
   margin: -10vw 14vw;
 }
 
-.div .ul {
+/* .div .ul {
   display: flex;
   flex-wrap: wrap;
   list-style: none;
@@ -45,4 +45,19 @@
 }
 .a {
   text-decoration: none;
+} */
+.table {
+  border-collapse: collapse;
 }
+
+.table th {
+  text-align: center;
+  padding-top: 1vw;
+  font-size: 1.8rem;
+}
+.table td {
+  font-size: 1.3rem;
+  padding: 0 1.5vw 0 1.5vw;
+  line-height: 1.6vw;
+}
+

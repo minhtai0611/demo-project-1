@@ -18,8 +18,7 @@ export default function About() {
                 <p>Key Features</p>
             </section>
             <article className={styled.p + " " + styled["gayathri-bold"]}>
-                <div className={styled.div}>
-                    <ul className={styled.ul}>
+                {/* <ul className={styled.ul}>
                         <li>Diverse Content</li>
                         <li>User-Friendly Interface</li>
                         <li>Personalized Recommendations</li>
@@ -32,8 +31,36 @@ export default function About() {
                         <li>
                             Experience tailored recommendations based on your reading preferences and browsing history. Discover new favorites and hidden gems as Everbook helps you explore the vast world of literature.
                         </li>
-                    </ul>
-                </div>
+                    </ul> */}
+                <table className={styled.table}>
+                    <thead>
+                        <tr>
+                            <th>Diverse Content</th>
+                            <th>User-Friendly Interface</th>
+                            <th>Personalized Recommendations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                Everbook offers a wide selection of ebooks, magazines, and other
+                                literary content across various genres and interests, ensuring
+                                there is something for every reader.
+                            </td>
+                            <td>
+                                With an intuitive interface, navigating Everbook is a breeze.
+                                Easily search, browse, and discover new titles and authors with
+                                convenient filters and categories.
+                            </td>
+                            <td>
+                                Experience tailored recommendations based on your reading
+                                preferences and browsing history. Discover new favorites and
+                                hidden gems as Everbook helps you explore the vast world of
+                                literature.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </article>
         </>
     );
