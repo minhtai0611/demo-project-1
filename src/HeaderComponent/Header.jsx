@@ -35,7 +35,7 @@ export default function Header() {
                                 styled.all
                             }
                         >
-                            <i className="fa fa-search"></i>
+                            <i className="fa fa-search" />
                         </button>
                         <ul className={styled.headerNavAll + " " + styled.ul}>
                             <li className={styled.headerLi + " " + styled.headerNavAll}>

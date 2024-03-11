@@ -6,9 +6,7 @@ export default function ErrorApp() {
         <>
             <div className={styled.all}>
                 <p>
-                    <i className={styled.i}>Sorry, page {(error.statusText ? error.statusText : error.message).toLowerCase()} ☹</i>
-                    <br />
-                    <br />
+                    <i className={styled.i}>Sorry, this page you looked for that is {(error.statusText ? error.statusText : error.message).toLowerCase()} now ☹</i>
                     <br />
                     <Link to="/" className={styled.a}>Return to Home Page</Link>
                 </p>

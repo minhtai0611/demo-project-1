@@ -1,14 +1,48 @@
 @import url("https://fonts.googleapis.com/css2?family=Lilita+One&display=swap");
 .all {
   width: 100vw;
-  height: 100vh;
+  height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: Lilita One;
   font-weight: 400;
   font-style: normal;
-  font-size: 5rem;
-  color: gold;
+  font-size: 4.5rem;
+  color: lightskyblue;
   text-align: center;
+}
+.gayathri-bold {
+  font-family: "Gayathri", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+.p {
+  color: papayawhip;
+  font-size: 2.3rem;
+  text-align: justify;
+  margin: -10vw 14vw;
+}
+
+.div .ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 2vw -6vw;
+}
+.div .ul li {
+  flex: calc(60vw / 3);
+  text-align: center;
+  padding: 0 2vw;
+  font-size: 1.8818rem;
+}
+.div .ul li{
+  border:none;
+}
+.div .ul li:nth-child(4), .div .ul li:nth-child(5), .div .ul li:nth-child(6){
+  text-align: justify;
+  font-size: 1.5956rem;
+}
+.a {
+  text-decoration: none;
 }

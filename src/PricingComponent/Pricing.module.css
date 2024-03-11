@@ -1,14 +1,73 @@
 @import url("https://fonts.googleapis.com/css2?family=Lilita+One&display=swap");
 .all {
   width: 100vw;
-  height: 100vh;
+  height: 50vh;
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: Lilita One;
   font-weight: 400;
   font-style: normal;
-  font-size: 5rem;
-  color: gold;
+  font-size: 4.5rem;
+  color: lightskyblue;
   text-align: center;
+  margin-bottom: 2vw;
+}
+.gayathri-bold {
+  font-family: "Gayathri", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+.p {
+  color: papayawhip;
+  font-size: 3rem;
+  text-align: left;
+  margin: -10vw 14vw;
+}
+.table {
+  border-collapse: collapse;
+}
+.table th, .table td{
+  border-left: 0.3vw solid papayawhip;
+  border-right: 0.3vw solid papayawhip;
+  
+}
+.table th {
+  text-align: center;
+  border-top: 0.3vw solid papayawhip;
+  padding-top: 1vw;
+}
+.table td {
+  font-size: 1.3rem;
+  padding: 0 1.5vw 0 1.5vw;
+  line-height: 2vw;
+}
+.table tr:nth-last-child(1) td{
+    border-bottom: 0.3vw solid papayawhip;
+}
+.table th:nth-child(1), .table td:nth-child(1){
+  background-color:forestgreen;
+}
+.table th:nth-child(2), .table td:nth-child(2){
+  background-color:navy;
+  margin: 0 5vw 0 5vw;
+}
+.table th:nth-child(3), .table td:nth-child(3){
+  background-color:indigo;
+}
+.table button {
+  cursor: pointer;
+  width: 16vw;
+  height: 2.5vw;
+  font-size: 1.5rem;
+  background-color:firebrick;
+  outline: none;
+  border: none;
+  color: papayawhip;
+  border-radius: 1vw;
+  display: block;
+  margin: auto;
+}
+.table td button:hover {
+  box-shadow: 0 0 0.5vw 0.5vw firebrick;
 }
