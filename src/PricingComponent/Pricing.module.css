@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Lilita+One&display=swap");
 .all {
   width: 100vw;
-  height: 50vh;
+  height: 30vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,7 +11,6 @@
   font-size: 4.5rem;
   color: lightskyblue;
   text-align: center;
-  margin-bottom: 2vw;
 }
 .gayathri-bold {
   font-family: "Gayathri", sans-serif;
@@ -20,9 +19,9 @@
 }
 .p {
   color: papayawhip;
-  font-size: 3rem;
-  text-align: left;
-  margin: -10vw 14vw;
+  font-size: 2.3rem;
+  text-align: justify;
+  margin: -5vw 14vw;
 }
 .table {
   border-collapse: collapse;

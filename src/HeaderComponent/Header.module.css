@@ -8,24 +8,28 @@
 }
 /*------------------------------------*/
 .headerImg {
-  height: 12rem;
-  width: 12rem;
-  margin-right: 2vw;
-  margin-left: 1vw;
+  height: 10vw;
+  width: 10vw;
+  /* margin-right: 2vw;
+  margin-left: 1vw; */
 }
 .header {
-  position: fixed;
-  height: 10rem;
+  position: relative;
+  height: 9vw;
   display: flex;
   align-items: center;
-  margin-top: 1vw;
+  text-align: center;
+  justify-content: space-around;
+  background-color:midnightblue;
+  width: 100vw;
+  /* margin-top: 1vw; */
 }
 .headerNavAll {
   display: inline;
 }
 .headerLi {
-  margin: 3.5vw;
-  border-radius: 1vw;
+  margin: 0 3.5vw 0 3.5vw;
+  /* border-radius: 1vw; */
   outline: none;
   border: none;
 }
@@ -40,31 +44,33 @@
 /*------------------------------------*/
 .divInput {
   position: relative;
-  display: inline-block;
-  margin-right: 2vw;
-  left: 0;
+  display: flow-root;
+  /* top: 1vw; */
+  /* margin-right: 2vw; */
+  /* left: 0; */
 }
 .divInput input {
-  width: 35rem;
+  width: 42vw;
   color: black;
-  height: 4rem;
+  height: 3.7vw;
   background-color: papayawhip;
   outline: none;
   border: none;
   border-radius: 1.5vw 0 0 1.5vw;
-  padding-right: 1vw;
+  /* padding-right: 1vw; */
 }
 .divInput button {
-  position: absolute;
-  height: 4rem;
+  /* position: absolute; */
+  height: 3.7vw;
   background-color: papayawhip;
   outline: none;
   border: none;
   color: black;
   border-radius: 0 1.5vw 1.5vw 0;
+  cursor: pointer;
 }
 .divInput ul {
-  position: absolute;
-  top: -1rem;
+  display: inline;
+  /* bottom: 1vw; */
   cursor: pointer;
 }
