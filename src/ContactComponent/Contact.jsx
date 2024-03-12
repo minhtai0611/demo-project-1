@@ -93,7 +93,7 @@ export default function Contact() {
                                 type="checkbox"
                                 required
                             />
-                            By ticking the box, you agree to these terms and condition of
+                            &nbsp;&nbsp;By checking the mark, you agree to these terms and conditions of
                             service.
                         </label>
                         <div>

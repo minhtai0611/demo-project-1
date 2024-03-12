@@ -23,17 +23,21 @@
   text-align: justify;
   /* margin: -5rem 10rem; */
 }
-.section{
+.section {
   display: flex;
   flex-grow: inherit;
   justify-content: center;
 }
 .form {
-  line-height: 3rem;
-  background-color:midnightblue;
+  line-height: 3.5rem;
+  background-color: midnightblue;
+  outline: none;
+  border-radius: 2rem;
+  border: 0.3rem solid gold;
 }
 
-.form input, .form textarea{
+.form input,
+.form textarea {
   /* display: inline-block;
   align-items: stretch; */
   background-color: papayawhip;
@@ -42,19 +46,30 @@
   color: black;
   border-radius: 1rem;
 }
-.form textarea{
+.form textarea {
   resize: none;
 }
-.form input[type="checkbox"]{
+.form input[type="checkbox"] {
+  position: relative;
   cursor: pointer;
-  width: 1rem;
-  height: 1rem;
-  margin-top: 3rem;
+  margin-top: 8rem;
+  appearance: none;
+  width: 2rem;
+  height: 2rem;
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  bottom: 4rem;
 }
-.form input[type="checkbox"]:checked{
-  color:mediumspringgreen
+.form input[type="checkbox"]:checked {
+  background-color: #1e90ff;
 }
-.form input[type="number"]::-webkit-inner-spin-button,.form input[type="number"]::-webkit-outer-spin-button{
+.form input[type="checkbox"]:checked:after {
+  content: "\2713";
+  color: papayawhip;
+}
+.form input[type="number"]::-webkit-inner-spin-button,
+.form input[type="number"]::-webkit-outer-spin-button {
   appearance: none;
   margin: 0;
 }
@@ -62,28 +77,38 @@
   position: relative;
   display: block;
   overflow: visible;
-  margin-bottom: 2rem;
+  /* margin-bottom: 2rem; */
 }
-.form label input:not(input[type="checkbox"]), .form label textarea{
+.form label input:not(input[type="checkbox"]),
+.form label textarea {
   position: absolute;
   top: 0;
   left: 25%;
-  width:25rem;
+  width: 25rem;
 }
-.form div{
+.form div {
   display: flex;
   gap: 25rem;
 }
-.form div input[type="submit"],.form div input[type="reset"]{
-  width:15rem;
-  height:3rem;
-  text-align:center;
+.form div input[type="submit"],
+.form div input[type="reset"] {
+  width: 15rem;
+  height: 3rem;
+  text-align: center;
   align-items: center;
   justify-content: center;
   font-size: 2rem;
 }
-.form div input[type="submit"]:hover,.form div input[type="reset"]:hover{
-  background-color:dodgerblue;
-  color:papayawhip
+.form div input[type="submit"]:hover,
+.form div input[type="reset"]:hover {
+  background-color: dodgerblue;
+  color: papayawhip;
 }
-
+.form fieldset {
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  border-bottom-width: 0;
+  border-top-width: 0;
+  border-left-width: 0;
+  border-right-width: 0;
+}
