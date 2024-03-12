@@ -19,7 +19,71 @@
 }
 .p {
   color: papayawhip;
-  font-size: 2.5rem;
+  font-size: 1.7rem;
   text-align: justify;
-  margin: -5rem 10rem;
+  /* margin: -5rem 10rem; */
 }
+.section{
+  display: flex;
+  flex-grow: inherit;
+  justify-content: center;
+}
+.form {
+  line-height: 3rem;
+  background-color:midnightblue;
+}
+
+.form input, .form textarea{
+  /* display: inline-block;
+  align-items: stretch; */
+  background-color: papayawhip;
+  outline: none;
+  border: none;
+  color: black;
+  border-radius: 1rem;
+}
+.form textarea{
+  resize: none;
+}
+.form input[type="checkbox"]{
+  cursor: pointer;
+  width: 1rem;
+  height: 1rem;
+  margin-top: 3rem;
+}
+.form input[type="checkbox"]:checked{
+  color:mediumspringgreen
+}
+.form input[type="number"]::-webkit-inner-spin-button,.form input[type="number"]::-webkit-outer-spin-button{
+  appearance: none;
+  margin: 0;
+}
+.form label {
+  position: relative;
+  display: block;
+  overflow: visible;
+  margin-bottom: 2rem;
+}
+.form label input:not(input[type="checkbox"]), .form label textarea{
+  position: absolute;
+  top: 0;
+  left: 25%;
+  width:25rem;
+}
+.form div{
+  display: flex;
+  gap: 25rem;
+}
+.form div input[type="submit"],.form div input[type="reset"]{
+  width:15rem;
+  height:3rem;
+  text-align:center;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+.form div input[type="submit"]:hover,.form div input[type="reset"]:hover{
+  background-color:dodgerblue;
+  color:papayawhip
+}
+

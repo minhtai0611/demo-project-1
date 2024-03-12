@@ -73,5 +73,5 @@
   margin: auto;
 }
 .table td button:hover {
-  box-shadow: 0 0 0.5rem 0.5rem firebrick;
+  background-color: dodgerblue;
 }
