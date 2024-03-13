@@ -24,19 +24,26 @@ export default function Header() {
                             minLength="5"
                             maxLength="20"
                         />
-                        <button
-                            type="button"
-                            title="button"
+                        <Link
+                            to="/"
                             className={
-                                styled.buttonInput +
-                                " " +
-                                styled.headerNavAll +
-                                " " +
-                                styled.all
+                                styled.a + " " + styled.all + " " + styled.headerNavAll
                             }
                         >
-                            <i className="fa fa-search" />
-                        </button>
+                            <button
+                                type="button"
+                                title="button"
+                                className={
+                                    styled.buttonInput +
+                                    " " +
+                                    styled.headerNavAll +
+                                    " " +
+                                    styled.all
+                                }
+                            >
+                                <i className="fa fa-search" />
+                            </button>
+                        </Link>
                         <ul className={styled.headerNavAll + " " + styled.ul}>
                             <li className={styled.headerLi + " " + styled.headerNavAll}>
                                 <Link
