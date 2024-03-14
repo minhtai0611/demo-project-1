@@ -1,34 +1,34 @@
 /* eslint-disable react/prop-types */
 import styled from "./SearchBookItem.module.css";
-import image1 from "../assets/images/image-1.png";
-export default function SearchBookItem({ nameBook, authorBook, ratingBook }) {
+export default function SearchBookItem({ titleBook, authorBook, imageBook }) {
     return (
         <>
             <li>
-                <img src={image1} alt="image1" className={styled.img}></img>
+                <img src={imageBook} alt="image1" className={styled.img}></img>
                 <p className={styled.p + " " + styled["gayathri-bold"]}>
-                    Name: {nameBook}
+                    Name: {titleBook}
                 </p>
                 <p className={styled.p + " " + styled["gayathri-bold"]}>
                     Author: {authorBook}
                 </p>
-                <p className={styled.p + " " + styled["gayathri-bold"]}>
-                    Rating: {ratingBook}
-                </p>
                 <button
-                    className={styled.p + " " + styled["gayathri-bold"] + " " + styled.button}
+                    className={
+                        styled.p + " " + styled["gayathri-bold"] + " " + styled.button
+                    }
                     type="button"
                 >
                     Read book
                 </button>
                 <br />
                 <button
-                    className={styled.p + " " + styled["gayathri-bold"] + " " + styled.button}
+                    className={
+                        styled.p + " " + styled["gayathri-bold"] + " " + styled.button
+                    }
                     type="button"
                 >
                     Add to wishlist
                 </button>
             </li>
         </>
-    )
+    );
 }

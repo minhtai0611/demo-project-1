@@ -19,7 +19,6 @@
   padding-inline-start: 0;
   text-align: center;
   justify-content: center;
-  align-items: center;
+  align-items: first baseline;
   list-style: none;
 }
-
