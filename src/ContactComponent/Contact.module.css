@@ -103,6 +103,7 @@
 .form div input[type="reset"]:hover {
   background-color: dodgerblue;
   color: papayawhip;
+  cursor: pointer;
 }
 .form fieldset {
   margin-inline-start: 0;

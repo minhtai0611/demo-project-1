@@ -8,19 +8,18 @@
   text-align: center;
   padding-top: 3rem;
 }
-.ul {
-  list-style: none;
-}
-
 .a {
   text-decoration: none;
 }
-ul{
+.ul {
   font-size: 0;
-  column-count: 5;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 7rem;
+  padding-inline-start: 0;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
 }
-img {
-  height: 15rem;
-  width: 15rem;
-  object-fit: contain;
-}
+

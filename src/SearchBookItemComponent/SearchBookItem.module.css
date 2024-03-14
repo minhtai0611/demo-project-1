@@ -1,0 +1,27 @@
+.gayathri-bold {
+  font-family: "Gayathri", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+.p {
+  color: papayawhip;
+  font-size: 1.5rem;
+  line-height: 1rem;
+}
+.img {
+  height: 20rem;
+  width: 20rem;
+  object-fit: contain;
+}
+.button{
+  padding: 1rem 0.5rem;
+  background-color:seagreen;
+  outline: none;
+  border: none;
+  margin: 0.5rem 0;
+  border-radius: 1rem;
+}
+.button:hover{
+  background-color:dodgerblue;
+  cursor: pointer;
+}

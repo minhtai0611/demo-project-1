@@ -27,12 +27,12 @@
   border-collapse: collapse;
 }
 .table th, .table td{
-  border-left: 0.5rem solid papayawhip;
-  border-right: 0.5rem solid papayawhip;
+  border-left: 0.3rem solid gold;
+  border-right: 0.3rem solid gold
 }
 .table th {
   text-align: center;
-  border-top: 0.5rem solid papayawhip;
+  border-top: 0.3rem solid gold;
   padding-top: 1rem;
 }
 .table td {
@@ -51,7 +51,7 @@
   background-color:indigo;
 }
 .table tr:nth-last-child(2) td{
-    border-bottom: 0.5rem solid papayawhip;
+    border-bottom: 0.3rem solid gold;
 }
 .table tr:nth-last-child(1) td{
   background-color: transparent;
@@ -74,4 +74,5 @@
 }
 .table td button:hover {
   background-color: dodgerblue;
+  cursor: pointer;
 }
