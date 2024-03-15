@@ -9,9 +9,9 @@
   line-height: 2rem;
 }
 .img {
-  height: 20rem;
-  width: 20rem;
-  object-fit: contain;
+  height: 23rem;
+  width: 23rem;
+  object-fit: fill;
 }
 .button{
   padding: 1rem 0.5rem;

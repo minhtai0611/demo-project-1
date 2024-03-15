@@ -1,5 +1,6 @@
 import styled from "./Search.module.css";
 import SearchBookItem from "../SearchBookItemComponent/SearchBookItem";
+import FetchBookData from "../FetchBookDataComponent/FetchBookData";
 import { useEffect, useState } from "react";
 export default function Search() {
     const [bookDataList, setBookDataList] = useState([]);
@@ -9,12 +10,8 @@ export default function Search() {
         async function FetchBookDataList() {
             setIsFetching(true);
             try {
-                const response = await fetch("https://www.dbooks.org/api/recent");
-                if (!response.ok) {
-                    throw new Error("Fail to fetch book data");
-                }
-                const jsonBookDataList = await response.json();
-                setBookDataList(jsonBookDataList.books);
+                const rawBookDataList = await FetchBookData();
+                setBookDataList(rawBookDataList);
                 setIsFetching(false);
             }
             catch (error) {
@@ -28,7 +25,7 @@ export default function Search() {
         <>
             <section className={styled.all}>
                 {isFetching && <p>Loading to fetch book data, please wait...</p>}
-                {!isFetching && !error && <p>List books are up to date</p>}
+                {!isFetching && !error && <p>Book list is up to date</p>}
                 {!isFetching && error && <p>{error}</p>}
             </section>
             <ul className={styled.ul}>
