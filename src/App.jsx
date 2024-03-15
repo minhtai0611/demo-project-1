@@ -4,7 +4,9 @@ import About from "./AboutComponent/About";
 import Pricing from "./PricingComponent/Pricing";
 import Contact from "./ContactComponent/Contact";
 import Root from "./RootComponent/Root";
-import Search from "./SearchComponent/Search";
+import Header from "./HeaderComponent/Header";
+import AddToWishlist from "./AddToWishlistComponent/AddToWishlist";
+import Upload from "./UploadComponent/Upload";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 const router = createBrowserRouter([
   {
@@ -14,7 +16,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Search />,
+        element: <Header />,
       },
       {
         path: "/about",
@@ -28,6 +30,14 @@ const router = createBrowserRouter([
         path: "/contact",
         element: <Contact />,
       },
+      {
+        path: "/wishlist",
+        element: <AddToWishlist />,
+      },
+      {
+        path: "/upload",
+        element: <Upload />,
+      }
     ],
   },
 ]);

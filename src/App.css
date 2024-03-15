@@ -9,3 +9,9 @@ body {
   /* overflow-y: hidden; */
   margin: 0;
 }
+* {
+  user-select: none;
+}
+*::selection {
+  background: none;
+}

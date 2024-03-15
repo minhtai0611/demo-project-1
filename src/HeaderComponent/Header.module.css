@@ -6,12 +6,26 @@
   font-size: xx-large;
   color: gold;
 }
+.section{
+  font-size: 4.5rem;
+  color: lightskyblue;
+  text-align: center;
+  padding-top: 3rem;
+}
+.headerUl {
+  font-size: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 7rem;
+  padding-inline-start: 0;
+  text-align: center;
+  justify-content: center;
+  align-items: first baseline;
+}
 /*------------------------------------*/
 .headerImg {
   height: 7rem;
   width: 7rem;
-  /* margin-right: 2vw;
-  margin-left: 1vw; */
 }
 .header {
   position: relative;
@@ -22,14 +36,12 @@
   justify-content: flex-start;
   background-color: midnightblue;
   width: 100vw;
-  /* margin-top: 1vw; */
 }
 .headerNavAll {
   display: inline;
 }
 .headerLi {
   margin: 0 2rem 0 2rem;
-  /* border-radius: 1vw; */
   outline: none;
   border: none;
 }
@@ -45,9 +57,6 @@
 .divInput {
   position: relative;
   display: flow-root;
-  /* top: 1vw; */
-  /* margin-right: 2vw; */
-  /* left: 0; */
 }
 .divInput input {
   width: 35rem;
@@ -57,7 +66,6 @@
   outline: none;
   border: none;
   border-radius: 2rem 0 0 2rem;
-  /* padding-right: 1vw; */
   margin-left: 2rem;
 }
 .divInput button {
@@ -73,6 +81,5 @@
 }
 .divInput ul {
   display: inline;
-  /* bottom: 1vw; */
   cursor: pointer;
 }
