@@ -65,10 +65,10 @@
   background-color: papayawhip;
   outline: none;
   border: none;
-  border-radius: 2rem 0 0 2rem;
+  border-radius: 2rem;
   margin-left: 2rem;
 }
-.divInput button {
+/* .divInput button {
   position: absolute;
   z-index: 1;
   height: 3rem;
@@ -78,7 +78,7 @@
   color: black;
   border-radius: 0 2rem 2rem 0;
   cursor: pointer;
-}
+} */
 .divInput ul {
   display: inline;
   cursor: pointer;

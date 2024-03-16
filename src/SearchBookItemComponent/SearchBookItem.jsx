@@ -6,10 +6,10 @@ export default function SearchBookItem({ titleBook, authorBook, imageBook }) {
             <li>
                 <img src={imageBook} alt="image1" className={styled.img}></img>
                 <p className={styled.p + " " + styled["gayathri-bold"]}>
-                    Name: {titleBook}
+                    {titleBook}
                 </p>
                 <p className={styled.p + " " + styled["gayathri-bold"]}>
-                    Author: {authorBook}
+                    {authorBook}
                 </p>
                 <button
                     className={
