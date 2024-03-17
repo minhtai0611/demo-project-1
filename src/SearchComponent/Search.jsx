@@ -8,9 +8,7 @@ export default function Search({ bookDataList }) {
                 {bookDataList.map((bookData) => (
                     <SearchBookItem
                         key={bookData.id}
-                        titleBook={bookData.title}
-                        authorBook={bookData.authors}
-                        imageBook={bookData.image}
+                        bookData={bookData}
                     />
                 ))}
             </ul>

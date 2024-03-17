@@ -25,6 +25,9 @@ export default function useFetchBookData() {
     return {
         bookDataList,
         isFetching,
-        error
+        error,
+        setBookDataList,
+        setIsFetching,
+        setError
     }
 }
