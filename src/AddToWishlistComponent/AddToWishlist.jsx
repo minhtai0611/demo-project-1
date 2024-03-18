@@ -1,6 +1,7 @@
 import styled from "./AddToWishlist.module.css";
 import { wishlist } from "../SearchBookItemComponent/SearchBookItem";
 import { useState } from "react";
+import { uploadForm } from "../UploadComponent/Upload";
 export default function AddToWishlist() {
     const [removeFromWishlist, setRemoveFromWishlist] = useState(wishlist);
     function functionRemoveFromWishlist(bookData) {
@@ -8,6 +9,7 @@ export default function AddToWishlist() {
             return [...prevBookWishlist.filter((book) => book.id !== bookData.id)];
         });
     }
+    console.log(uploadForm);
     return (
         <>
             <section className={styled.all}>
@@ -42,6 +44,39 @@ export default function AddToWishlist() {
                             }}
                         >
                             Remove from wishlist
+                        </button>
+                    </li>
+                ))}
+            </ul>
+            <section className={styled.all}>
+                <p>Uploadlist</p>
+            </section>
+            <ul className={styled.ul}>
+                {uploadForm.map((bookData) => (
+                    <li key={bookData.idBook}>
+                        <img src={bookData.imageBook} alt="image1" className={styled.img}></img>
+                        <p className={styled.p + " " + styled["gayathri-bold"]}>
+                            {bookData.titleBook}
+                        </p>
+                        <p className={styled.p + " " + styled["gayathri-bold"]}>
+                            {bookData.authorBook}
+                        </p>
+                        <button
+                            className={
+                                styled.p + " " + styled["gayathri-bold"] + " " + styled.button
+                            }
+                            type="button"
+                        >
+                            Publish on platform
+                        </button>
+                        <br />
+                        <button
+                            className={
+                                styled.p + " " + styled["gayathri-bold"] + " " + styled.button
+                            }
+                            type="button"
+                        >
+                            Remove from uploadlist
                         </button>
                     </li>
                 ))}
