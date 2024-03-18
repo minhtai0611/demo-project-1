@@ -18,7 +18,6 @@ export default function Upload() {
         })
     }
     uploadForm = [...new Set([...uploadForm, ...uploadData])];
-    console.log(uploadForm);
     return (
         <>
             <section className={styled.all}>

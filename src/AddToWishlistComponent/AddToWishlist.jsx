@@ -9,7 +9,14 @@ export default function AddToWishlist() {
             return [...prevBookWishlist.filter((book) => book.id !== bookData.id)];
         });
     }
-    console.log(uploadForm);
+    const [removeFromUpload, setRemoveFromUpload] = useState(uploadForm);
+    function functionRemoveFromUpload(bookData) {
+        setRemoveFromUpload((prevBookUpload) => {
+            return [
+                ...prevBookUpload.filter((book) => book.idBook !== bookData.idBook),
+            ];
+        });
+    }
     return (
         <>
             <section className={styled.all}>
@@ -52,9 +59,13 @@ export default function AddToWishlist() {
                 <p>Uploadlist</p>
             </section>
             <ul className={styled.ul}>
-                {uploadForm.map((bookData) => (
+                {removeFromUpload.map((bookData) => (
                     <li key={bookData.idBook}>
-                        <img src={bookData.imageBook} alt="image1" className={styled.img}></img>
+                        <img
+                            src={bookData.imageBook}
+                            alt="image1"
+                            className={styled.img}
+                        ></img>
                         <p className={styled.p + " " + styled["gayathri-bold"]}>
                             {bookData.titleBook}
                         </p>
@@ -75,6 +86,9 @@ export default function AddToWishlist() {
                                 styled.p + " " + styled["gayathri-bold"] + " " + styled.button
                             }
                             type="button"
+                            onClick={() => {
+                                functionRemoveFromUpload(bookData);
+                            }}
                         >
                             Remove from uploadlist
                         </button>
