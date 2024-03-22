@@ -3,18 +3,29 @@
 import { useState } from "react";
 import styled from "./SearchBookItem.module.css";
 export let wishlist = [];
+export let wishlistBookData = null;
 export default function SearchBookItem({ bookData }) {
     const [addToWishlist, setAddToWishlist] = useState([]);
-    function functionAddToWishlist(bookData) {
+    function functionAddToWishlist(bookDataSearch) {
+        wishlistBookData = bookDataSearch;
         setAddToWishlist((prevBookWishlist) => {
-            return [...prevBookWishlist.filter((book) => book.id !== bookData.id), bookData];
+            return [
+                ...prevBookWishlist.filter((book) => book.id !== bookDataSearch.id),
+                bookDataSearch,
+            ];
         });
     }
     wishlist = [...new Set([...wishlist, ...addToWishlist])];
     return (
         <>
             <li key={bookData.id}>
-                <img src={bookData.image} alt="image1" className={styled.img}></img>
+                <img
+                    src={bookData.image}
+                    alt="image1"
+                    className={styled.img}
+                    decoding="async"
+                    loading="lazy"
+                ></img>
                 <p className={styled.p + " " + styled["gayathri-bold"]}>
                     {bookData.title}
                 </p>

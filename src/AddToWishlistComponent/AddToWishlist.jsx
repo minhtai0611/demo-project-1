@@ -3,6 +3,14 @@ import { wishlist } from "../SearchBookItemComponent/SearchBookItem";
 import { useState } from "react";
 import { uploadForm } from "../UploadComponent/Upload";
 export default function AddToWishlist() {
+    // const uploadFormUpdate = [
+    //     ...uploadForm.filter((book) => book.idBook !== uploadData.idBook),
+    //     uploadData,
+    // ];
+    // const wishlistUpdate = [
+    //     ...wishlist.filter((book) => book.id !== wishlistBookData.id),
+    //     wishlistBookData,
+    // ];
     const [removeFromWishlist, setRemoveFromWishlist] = useState(wishlist);
     function functionRemoveFromWishlist(bookData) {
         setRemoveFromWishlist((prevBookWishlist) => {
@@ -25,7 +33,13 @@ export default function AddToWishlist() {
             <ul className={styled.ul}>
                 {removeFromWishlist.map((bookData) => (
                     <li key={bookData.id}>
-                        <img src={bookData.image} alt="image1" className={styled.img}></img>
+                        <img
+                            src={bookData.image}
+                            alt="image1"
+                            className={styled.img}
+                            decoding="async"
+                            loading="lazy"
+                        ></img>
                         <p className={styled.p + " " + styled["gayathri-bold"]}>
                             {bookData.title}
                         </p>
@@ -65,6 +79,8 @@ export default function AddToWishlist() {
                             src={bookData.imageBook}
                             alt="image1"
                             className={styled.img}
+                            decoding="async"
+                            loading="lazy"
                         ></img>
                         <p className={styled.p + " " + styled["gayathri-bold"]}>
                             {bookData.titleBook}
