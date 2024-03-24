@@ -5,7 +5,6 @@ export default function Contact() {
         event.preventDefault();
         const formdata = new FormData(event.target);
         const data = Object.fromEntries(formdata.entries());
-        console.log(data);
         async function functionPostDataForm() {
             try {
                 const response = await fetch("http://localhost:3000/contact", {

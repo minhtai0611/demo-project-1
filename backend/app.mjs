@@ -2,7 +2,7 @@ import bodyParser from "body-parser";
 import express from "express";
 import fileSystem from "node:fs";
 import process from "node:process";
-import query from "./query.mjs";
+import contactQuery from "./contactQuery.mjs";
 import cors from "cors";
 import helmet from "helmet";
 
@@ -53,10 +53,10 @@ app.get('/', (req, res) => {
     res.status(200).send("NodeJS + Express + PostgreSQL");
 })
 
-app.get('/contact', query.getUser);
-app.post('/contact', query.createUser);
-app.put('/contact', query.updateUser);
-app.delete('/contact', query.deleteUser);
+app.get('/contact', contactQuery.getUser);
+app.post('/contact', contactQuery.createUser);
+app.put('/contact', contactQuery.updateUser);
+app.delete('/contact', contactQuery.deleteUser);
 
 app.get("/api", async (req, res) => {
     // const readStream = await fileSystemPromise.readFile("./asset/bookDataList.json");
