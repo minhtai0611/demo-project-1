@@ -1,5 +1,32 @@
 import styled from "./Contact.module.css";
 export default function Contact() {
+    function functionSubmitForm(event) {
+        event.preventDefault();
+        const formdata = new FormData(event.target);
+        const data = Object.fromEntries(formdata.entries());
+        console.log(data);
+        async function functionPostDataForm() {
+            try {
+                const response = await fetch("http://localhost:3000/contact", {
+                    method: "POST",
+                    body: JSON.stringify(data),
+                    headers: {
+                        "Content-Type": "application/json"
+                    }
+                });
+                const responseForm = await response.json();
+                if (!response.ok) {
+                    throw new Error("Fail to send data form");
+                }
+                return responseForm;
+            }
+            catch (error) {
+                console.log(error.message || "Could not to send data form");
+            }
+        }
+        functionPostDataForm();
+    }
+
     return (
         <>
             <section className={styled.all}>
@@ -10,6 +37,9 @@ export default function Contact() {
                     className={
                         styled.p + " " + styled["gayathri-bold"] + " " + styled.form
                     }
+                    action="/contact"
+                    method="post"
+                    onSubmit={(event) => functionSubmitForm(event)}
                 >
                     <fieldset>
                         <label htmlFor="name">
