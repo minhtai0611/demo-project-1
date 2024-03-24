@@ -1,4 +1,5 @@
 import styled from "./Contact.module.css";
+import HeaderReplica from "../HeaderReplicaComponent/HeaderReplica";
 export default function Contact() {
     function functionSubmitForm(event) {
         event.preventDefault();
@@ -29,6 +30,7 @@ export default function Contact() {
 
     return (
         <>
+            <HeaderReplica />
             <section className={styled.all}>
                 <p>Contact</p>
             </section>

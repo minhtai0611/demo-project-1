@@ -4,6 +4,7 @@ import fileSystem from "node:fs";
 import process from "node:process";
 import query from "./query.mjs";
 import cors from "cors";
+import helmet from "helmet";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -13,6 +14,7 @@ app.use(express.static("asset"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+app.use(helmet());
 
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
@@ -99,7 +101,15 @@ app.get("/api", async (req, res) => {
 //         console.log(error.message);
 //     }
 // });
+app.use((req, res, next) => {
+    const error = new Error('Unexpectable error got occured');
+    next(error);
+});
+app.use((err, req, res, next) => {
+    console.error('Error:', err.message);
+    res.status(500).send('Server encountered an unexpected edition and got error');
+});
 
 app.listen(PORT, () =>
-    console.log(`Server NodeJS + Express is running on port ${PORT}`)
+    console.log(`Server NodeJS + Express + PostgreSQL is running on port ${PORT}`)
 );

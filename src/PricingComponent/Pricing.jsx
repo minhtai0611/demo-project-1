@@ -1,7 +1,9 @@
 import styled from "./Pricing.module.css";
+import HeaderReplica from "../HeaderReplicaComponent/HeaderReplica";
 export default function Pricing() {
     return (
         <>
+            <HeaderReplica />
             <section className={styled.all}>
                 <p>Pricing</p>
             </section>

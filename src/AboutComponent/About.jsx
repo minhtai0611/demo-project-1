@@ -1,7 +1,9 @@
 import styled from "./About.module.css";
+import HeaderReplica from "../HeaderReplicaComponent/HeaderReplica";
 export default function About() {
     return (
         <>
+            <HeaderReplica />
             <section className={styled.all}>
                 <p>About</p>
             </section>

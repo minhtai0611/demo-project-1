@@ -2,6 +2,7 @@ import styled from "./AddToWishlist.module.css";
 import { wishlist } from "../SearchBookItemComponent/SearchBookItem";
 import { useState } from "react";
 import { uploadForm } from "../UploadComponent/Upload";
+import HeaderReplica from "../HeaderReplicaComponent/HeaderReplica";
 export default function AddToWishlist() {
     // const uploadFormUpdate = [
     //     ...uploadForm.filter((book) => book.idBook !== uploadData.idBook),
@@ -27,6 +28,7 @@ export default function AddToWishlist() {
     }
     return (
         <>
+            <HeaderReplica />
             <section className={styled.all}>
                 <p>Wishlist</p>
             </section>

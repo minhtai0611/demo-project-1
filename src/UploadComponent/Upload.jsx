@@ -1,6 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 import { useState } from "react";
 import styled from "./Upload.module.css";
+import HeaderReplica from "../HeaderReplicaComponent/HeaderReplica";
 export let uploadForm = [];
 export let uploadData = null;
 export default function Upload() {
@@ -22,6 +23,7 @@ export default function Upload() {
     uploadForm = [...new Set([...uploadForm, ...uploadDataList])];
     return (
         <>
+            <HeaderReplica />
             <section className={styled.all}>
                 <p>Upload</p>
             </section>
