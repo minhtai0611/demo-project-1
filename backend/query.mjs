@@ -11,24 +11,24 @@ const pool = new Pool({
 });
 
 try {
-    // pool.query(`DROP DATABASE IF EXISTS ${pool.database}`, (error, results) => {
+    // pool.query(`DROP DATABASE IF EXISTS contactdb`, (error, results) => {
     //     if (error) {
     //         throw new Error(error);
     //     }
     // });
-    // pool.query(`CREATE DATABASE IF NOT EXISTS${pool.database}`, (error, results) => {
+    // pool.query(`CREATE DATABASE contactdb${pool.database}`, (error, results) => {
     //     if (error) {
     //         throw new Error(error);
     //     }
     // });
-    pool.query("DROP TABLE IF EXISTS users", (error, results) => {
+    pool.query("DROP TABLE IF EXISTS users", (error) => {
         if (error) {
-            throw new Error(error);
+            throw error;
         }
     });
-    pool.query("CREATE TABLE IF NOT EXISTS users (ID SERIAL PRIMARY KEY, name VARCHAR(30) NOT NULL, age INT NOT NULL, country VARCHAR(30) NOT NULL, email VARCHAR(30) NOT NULL, phonenumber VARCHAR(20) NOT NULL, comment VARCHAR(100) NOT NULL, termcondition VARCHAR(2)", (error, results) => {
+    pool.query("CREATE TABLE IF NOT EXISTS users (ID SERIAL PRIMARY KEY, name VARCHAR(30) NOT NULL, age INT NOT NULL, country VARCHAR(30) NOT NULL, email VARCHAR(30) UNIQUE NOT NULL, phonenumber VARCHAR(20) UNIQUE NOT NULL, comment VARCHAR(100) NOT NULL, termcondition VARCHAR(2))", (error) => {
         if (error) {
-            throw new Error(error);
+            throw error;
         }
     });
 }
@@ -40,7 +40,7 @@ const getUser = (req, res) => {
     try {
         pool.query("SELECT * FROM users", (error, results) => {
             if (error) {
-                throw new Error(error);
+                throw error;
             }
             res.status(200).json(results.rows);
         })
@@ -59,7 +59,7 @@ const createUser = (req, res) => {
             [name, age, country, email, phoneNumber, comment, termCondition],
             (error, results) => {
                 if (error) {
-                    throw new Error(error);
+                    throw error;
                 }
                 res.status(201).json(results.rows);
             }
@@ -78,7 +78,7 @@ const updateUser = (req, res) => {
             [name, age, country, email, phoneNumber, comment, termCondition],
             (error, results) => {
                 if (error) {
-                    throw error
+                    throw error;
                 }
                 res.status(200).json(results.rows);
             }
@@ -93,7 +93,7 @@ const deleteUser = (req, res) => {
     try {
         pool.query("DELETE FROM users WHERE name = $1", (error, results) => {
             if (error) {
-                throw error
+                throw error;
             }
             res.status(200).json(results.rows);
         })

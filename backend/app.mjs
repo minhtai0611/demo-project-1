@@ -3,6 +3,7 @@ import express from "express";
 import fileSystem from "node:fs";
 import process from "node:process";
 import query from "./query.mjs";
+import cors from "cors";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -11,6 +12,7 @@ app.set("view engine", "ejs");
 app.use(express.static("asset"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
