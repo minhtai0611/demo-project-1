@@ -1,7 +1,6 @@
 import pkg from "pg";
 
 const { Pool } = pkg;
-
 const pool = new Pool({
     user: "contactuser",
     host: "localhost",
@@ -9,7 +8,6 @@ const pool = new Pool({
     password: "contact",
     port: 5432,
 });
-
 try {
     // pool.query(`DROP DATABASE IF EXISTS contactdb`, (error, results) => {
     //     if (error) {
@@ -21,21 +19,20 @@ try {
     //         throw new Error(error);
     //     }
     // });
-    pool.query("DROP TABLE IF EXISTS users", (error) => {
+    pool.query("DROP TABLE IF EXISTS users; CREATE TABLE IF NOT EXISTS users (ID SERIAL PRIMARY KEY, name VARCHAR(30) NOT NULL, age INT NOT NULL, country VARCHAR(30) NOT NULL, email VARCHAR(30) UNIQUE NOT NULL, phonenumber VARCHAR(20) UNIQUE NOT NULL, comment VARCHAR(100) NOT NULL, termcondition VARCHAR(2))", (error) => {
         if (error) {
             throw error;
         }
     });
-    pool.query("CREATE TABLE IF NOT EXISTS users (ID SERIAL PRIMARY KEY, name VARCHAR(30) NOT NULL, age INT NOT NULL, country VARCHAR(30) NOT NULL, email VARCHAR(30) UNIQUE NOT NULL, phonenumber VARCHAR(20) UNIQUE NOT NULL, comment VARCHAR(100) NOT NULL, termcondition VARCHAR(2))", (error) => {
-        if (error) {
-            throw error;
-        }
-    });
+    // pool.query("CREATE TABLE IF NOT EXISTS users (ID SERIAL PRIMARY KEY, name VARCHAR(30) NOT NULL, age INT NOT NULL, country VARCHAR(30) NOT NULL, email VARCHAR(30) UNIQUE NOT NULL, phonenumber VARCHAR(20) UNIQUE NOT NULL, comment VARCHAR(100) NOT NULL, termcondition VARCHAR(2))", (error) => {
+    //     if (error) {
+    //         throw error;
+    //     }
+    // });
 }
 catch (error) {
     console.log(error.message);
 }
-
 const getUser = (req, res) => {
     try {
         pool.query("SELECT * FROM users", (error, results) => {
@@ -49,8 +46,6 @@ const getUser = (req, res) => {
         console.log(error.message);
     }
 }
-
-
 const createUser = (req, res) => {
     const { name, age, country, email, phoneNumber, comment, termCondition } = req.body;
     try {
@@ -69,7 +64,6 @@ const createUser = (req, res) => {
         console.log(error.message);
     }
 }
-
 const updateUser = (req, res) => {
     const { name, age, country, email, phoneNumber, comment, termCondition } = req.body;
     try {
@@ -88,7 +82,6 @@ const updateUser = (req, res) => {
         console.log(error.message);
     }
 }
-
 const deleteUser = (req, res) => {
     try {
         pool.query("DELETE FROM users WHERE name = $1", (error, results) => {
@@ -102,7 +95,6 @@ const deleteUser = (req, res) => {
         console.log(error.message);
     }
 }
-
 export default {
     getUser,
     createUser,
