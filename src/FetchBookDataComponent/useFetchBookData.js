@@ -12,10 +12,16 @@ export default function useFetchBookData() {
                     throw new Error("Fail to fetch book data");
                 }
                 const jsonBookDataList = await response.json();
-                setBookDataList(jsonBookDataList.books);
+                setBookDataList(
+                    jsonBookDataList.books.filter(
+                        (bookData, index, array) =>
+                            array.findIndex(
+                                (otherBookData) => bookData.id === otherBookData.id
+                            ) === index
+                    )
+                );
                 setIsFetching(false);
-            }
-            catch (error) {
+            } catch (error) {
                 setError(error.message || "Could not to fetch book data");
                 setIsFetching(false);
             }
@@ -28,6 +34,6 @@ export default function useFetchBookData() {
         error,
         setBookDataList,
         setIsFetching,
-        setError
-    }
+        setError,
+    };
 }
