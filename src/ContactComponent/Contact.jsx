@@ -34,6 +34,11 @@ export default function Contact() {
                 <p>Contact</p>
             </section>
             <section className={styled.section}>
+                {formData && isSent && <p className={styled.p + " " + styled["gayathri-bold"] + " " + styled.green}>Your form has been sent successfully</p>}
+                {error && !isSent && <p className={styled.p + " " + styled["gayathri-bold"] + " " + styled.red}>Fail to send your form</p>}
+                {!formData && isSent && undefined}
+            </section>
+            <section className={styled.section}>
                 <form
                     className={
                         styled.p + " " + styled["gayathri-bold"] + " " + styled.form
@@ -149,11 +154,6 @@ export default function Contact() {
 
                     </fieldset>
                 </form>
-            </section>
-            <section className={styled.section}>
-                {formData && isSent && <p className={styled.p + " " + styled["gayathri-bold"] + " " + styled.green}>Your form has been sent successfully</p>}
-                {error && !isSent && <p className={styled.p + " " + styled["gayathri-bold"] + " " + styled.red}>Fail to send your form</p>}
-                {!formData && isSent && undefined}
             </section>
         </>
     );

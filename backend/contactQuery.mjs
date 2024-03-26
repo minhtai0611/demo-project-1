@@ -22,9 +22,9 @@ try {
     pool.query(
         "DROP TABLE IF EXISTS users; \
         CREATE TABLE IF NOT EXISTS users (\
-        id SMALLSERIAL PRIMARY KEY, name VARCHAR(30) NOT NULL, \
+        name VARCHAR(30) NOT NULL, \
         age SMALLINT NOT NULL, country VARCHAR(30) NOT NULL, \
-        email VARCHAR(30) UNIQUE NOT NULL, phonenumber VARCHAR(20) UNIQUE NOT NULL, \
+        email VARCHAR(30) NOT NULL, phonenumber VARCHAR(20) NOT NULL, \
         comment VARCHAR(100) NOT NULL, termcondition VARCHAR(2))",
         (error) => {
             if (error) {
