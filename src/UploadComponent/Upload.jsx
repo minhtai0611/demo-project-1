@@ -2,10 +2,10 @@
 import { useState } from "react";
 import styled from "./Upload.module.css";
 import HeaderReplica from "../HeaderReplicaComponent/HeaderReplica";
-export let uploadForm = [];
-export let uploadData = null;
+// export let uploadForm = [];
+// export let uploadData = null;
 export default function Upload() {
-    const [uploadDataList, setUploadDataList] = useState([]);
+    // const [uploadDataList, setUploadDataList] = useState([]);
     const [imageFile, setImageFile] = useState();
     function functionImageFile(event) {
         setImageFile(URL.createObjectURL(event.target.files[0]));
@@ -15,12 +15,12 @@ export default function Upload() {
         const formdata = new FormData(event.target);
         const data = Object.fromEntries(formdata.entries());
         data.imageBook = imageFile;
-        uploadData = data;
-        setUploadDataList((prevUploadData) => {
-            return [...prevUploadData.filter((book) => book.idBook !== data.idBook), data];
-        });
+        // uploadData = data;
+        // setUploadDataList((prevUploadData) => {
+        //     return [...prevUploadData.filter((book) => book.idBook !== data.idBook), data];
+        // });
     }
-    uploadForm = [...new Set([...uploadForm, ...uploadDataList])];
+    // uploadForm = [...new Set([...uploadForm, ...uploadDataList])];
     return (
         <>
             <HeaderReplica />

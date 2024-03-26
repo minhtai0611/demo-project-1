@@ -114,7 +114,7 @@ export default function Header() {
             <section className={styled.all + " " + styled.section}>
                 {isFetching && <p>Loading to fetch book data, please wait...</p>}
                 {!isFetching && !error && <p>Book list is up to date</p>}
-                {!isFetching && error && <p>{error}</p>}
+                {!isFetching && error && <p>Fail to fetch book data</p>}
             </section>
             <Search bookDataList={filterResult} />
         </>

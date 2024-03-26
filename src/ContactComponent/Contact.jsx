@@ -1,32 +1,32 @@
 import styled from "./Contact.module.css";
 import HeaderReplica from "../HeaderReplicaComponent/HeaderReplica";
+import functionContactDataForm from "../ContactDataFormComponent/ContactDataFormComponent";
+import { useState } from "react";
 export default function Contact() {
-    function functionSubmitForm(event) {
-        event.preventDefault();
+    const [formData, setFormData] = useState();
+    const [isSent, setIsSent] = useState(false);
+    const [error, setError] = useState();
+    async function functionSubmitForm(event) {
+        await event.preventDefault();
         const formdata = new FormData(event.target);
         const data = Object.fromEntries(formdata.entries());
-        async function functionPostDataForm() {
-            try {
-                const response = await fetch("http://localhost:3000/contact", {
-                    method: "POST",
-                    body: JSON.stringify(data),
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
-                });
-                const responseForm = await response.json();
-                if (!response.ok) {
-                    throw new Error("Fail to send data form");
-                }
-                return responseForm;
-            }
-            catch (error) {
-                console.log(error.message || "Could not to send data form");
+        try {
+            const { responseForm, responseOk } = await functionContactDataForm(data);
+            setFormData(responseForm);
+            setIsSent(true);
+            if (!responseOk) {
+                throw new Error("Fail to send data form");
             }
         }
-        functionPostDataForm();
+        catch (error) {
+            setError(error.message || "Could not to send data form");
+            setIsSent(false);
+        }
     }
-
+    function functionResetForm() {
+        setFormData();
+        setIsSent(true);
+    }
     return (
         <>
             <HeaderReplica />
@@ -41,6 +41,7 @@ export default function Contact() {
                     action="/contact"
                     method="post"
                     onSubmit={(event) => functionSubmitForm(event)}
+                    onReset={() => functionResetForm()}
                 >
                     <fieldset>
                         <label htmlFor="name">
@@ -148,6 +149,11 @@ export default function Contact() {
 
                     </fieldset>
                 </form>
+            </section>
+            <section className={styled.section}>
+                {formData && isSent && <p className={styled.p + " " + styled["gayathri-bold"] + " " + styled.green}>Your form has been sent successfully</p>}
+                {error && !isSent && <p className={styled.p + " " + styled["gayathri-bold"] + " " + styled.red}>Fail to send your form</p>}
+                {!formData && isSent && undefined}
             </section>
         </>
     );

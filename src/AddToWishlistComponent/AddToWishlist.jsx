@@ -1,7 +1,7 @@
 import styled from "./AddToWishlist.module.css";
 import { wishlist } from "../SearchBookItemComponent/SearchBookItem";
 import { useState } from "react";
-import { uploadForm } from "../UploadComponent/Upload";
+// import { uploadForm } from "../UploadComponent/Upload";
 import HeaderReplica from "../HeaderReplicaComponent/HeaderReplica";
 export default function AddToWishlist() {
     // const uploadFormUpdate = [
@@ -18,14 +18,14 @@ export default function AddToWishlist() {
             return [...prevBookWishlist.filter((book) => book.id !== bookData.id)];
         });
     }
-    const [removeFromUpload, setRemoveFromUpload] = useState(uploadForm);
-    function functionRemoveFromUpload(bookData) {
-        setRemoveFromUpload((prevBookUpload) => {
-            return [
-                ...prevBookUpload.filter((book) => book.idBook !== bookData.idBook),
-            ];
-        });
-    }
+    // const [removeFromUpload, setRemoveFromUpload] = useState(uploadForm);
+    // function functionRemoveFromUpload(bookData) {
+    //     setRemoveFromUpload((prevBookUpload) => {
+    //         return [
+    //             ...prevBookUpload.filter((book) => book.idBook !== bookData.idBook),
+    //         ];
+    //     });
+    // }
     return (
         <>
             <HeaderReplica />
@@ -75,7 +75,7 @@ export default function AddToWishlist() {
                 <p>Uploadlist</p>
             </section>
             <ul className={styled.ul}>
-                {removeFromUpload.map((bookData) => (
+                {/* {removeFromUpload.map((bookData) => (
                     <li key={bookData.idBook}>
                         <img
                             src={bookData.imageBook}
@@ -111,7 +111,7 @@ export default function AddToWishlist() {
                             Remove from uploadlist
                         </button>
                     </li>
-                ))}
+                ))} */}
             </ul>
         </>
     );

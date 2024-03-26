@@ -21,9 +21,9 @@ try {
     // });
     pool.query(
         "DROP TABLE IF EXISTS users; \
-    CREATE TABLE IF NOT EXISTS users (\
-        ID SERIAL PRIMARY KEY, name VARCHAR(30) NOT NULL, \
-        age INT NOT NULL, country VARCHAR(30) NOT NULL, \
+        CREATE TABLE IF NOT EXISTS users (\
+        id SMALLSERIAL PRIMARY KEY, name VARCHAR(30) NOT NULL, \
+        age SMALLINT NOT NULL, country VARCHAR(30) NOT NULL, \
         email VARCHAR(30) UNIQUE NOT NULL, phonenumber VARCHAR(20) UNIQUE NOT NULL, \
         comment VARCHAR(100) NOT NULL, termcondition VARCHAR(2))",
         (error) => {
@@ -63,7 +63,7 @@ const createContactUser = (req, res) => {
                 if (error) {
                     throw error;
                 }
-                res.status(201).json(results.rows);
+                res.status(200).json(results.rows);
             }
         );
     } catch (error) {
