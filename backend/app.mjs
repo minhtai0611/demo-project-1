@@ -30,10 +30,10 @@ app.get('/', (req, res) => {
     res.status(200).send("NodeJS + Express + PostgreSQL");
 })
 
-app.get('/contact', contactQuery.getUser);
-app.post('/contact', contactQuery.createUser);
-app.put('/contact', contactQuery.updateUser);
-app.delete('/contact', contactQuery.deleteUser);
+app.get('/contact', contactQuery.getContactUser);
+app.post('/contact', contactQuery.createContactUser);
+app.put('/contact', contactQuery.updateContactUser);
+app.delete('/contact', contactQuery.deleteContactUser);
 
 app.get("/api", async (req, res) => {
     // const readStream = await fileSystemPromise.readFile("./asset/bookDataList.json");
