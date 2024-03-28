@@ -1,4 +1,36 @@
-export default async function functionUploadDataForm(data) {
+import { useEffect, useState } from "react";
+export function useUploadGetDataForm() {
+    const [uploadBookData, setUploadBookData] = useState([]);
+    const [isFetching, setIsFetching] = useState(false);
+    const [error, setError] = useState();
+    useEffect(() => {
+        async function UploadBookData() {
+            setIsFetching(true);
+            try {
+                const response = await fetch("http://localhost:3000/upload");
+                if (!response.ok) {
+                    throw new Error("Fail to fetch book data");
+                }
+                const jsonUploadBookData = await response.json();
+                setUploadBookData(jsonUploadBookData);
+                setIsFetching(false);
+            } catch (error) {
+                setError(error.message || "Could not to fetch book data");
+                setIsFetching(false);
+            }
+        }
+        UploadBookData();
+    }, []);
+    return {
+        uploadBookData,
+        isFetching,
+        error,
+        setUploadBookData,
+        setIsFetching,
+        setError,
+    };
+}
+export async function UploadPostDataForm(data) {
     try {
         const response = await fetch("http://localhost:3000/upload", {
             method: "POST",
@@ -7,13 +39,48 @@ export default async function functionUploadDataForm(data) {
                 "Content-Type": "application/json",
             },
         });
-        const responseOk = response.ok;
         if (!response.ok) {
             throw new Error("Fail to post data form");
         }
-        const responseForm = await response.json();
-        return { responseForm, responseOk };
+        const responseUpload = await response.json();
+        return responseUpload;
     } catch (error) {
         console.log(error.message || "Could not to post data form");
+    }
+}
+export async function UploadPutDataForm(data) {
+    try {
+        const response = await fetch("http://localhost:3000/upload", {
+            method: "PUT",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        if (!response.ok) {
+            throw new Error("Fail to put data form");
+        }
+        const responseUpload = await response.json();
+        return responseUpload;
+    } catch (error) {
+        console.log(error.message || "Could not to put data form");
+    }
+}
+export async function UploadDeleteDataForm(data) {
+    try {
+        const response = await fetch("http://localhost:3000/upload", {
+            method: "DELETE",
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        if (!response.ok) {
+            throw new Error("Fail to delete data form");
+        }
+        const responseUpload = await response.json();
+        return responseUpload;
+    } catch (error) {
+        console.log(error.message || "Could not to delete data form");
     }
 }

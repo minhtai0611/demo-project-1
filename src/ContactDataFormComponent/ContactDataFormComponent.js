@@ -1,4 +1,4 @@
-export default async function functionContactDataForm(data) {
+export default async function ContactDataForm(data) {
     try {
         const response = await fetch("http://localhost:3000/contact", {
             method: "POST",
@@ -11,8 +11,8 @@ export default async function functionContactDataForm(data) {
         if (!response.ok) {
             throw new Error("Fail to post data form");
         }
-        const responseForm = await response.json();
-        return { responseForm, responseOk };
+        const responseContact = await response.json();
+        return { responseContact, responseOk };
     } catch (error) {
         console.log(error.message || "Could not to post data form");
     }

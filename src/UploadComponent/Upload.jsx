@@ -2,6 +2,7 @@
 import { useState } from "react";
 import styled from "./Upload.module.css";
 import HeaderReplica from "../HeaderReplicaComponent/HeaderReplica";
+import { UploadPostDataForm } from "../UploadDataFormComponent/UploadDataFormComponent";
 // export let uploadForm = [];
 // export let uploadData = null;
 export default function Upload() {
@@ -10,11 +11,20 @@ export default function Upload() {
     function functionImageFile(event) {
         setImageFile(URL.createObjectURL(event.target.files[0]));
     }
-    function functionSubmitForm(event) {
+    async function functionSubmitForm(event) {
         event.preventDefault();
         const formdata = new FormData(event.target);
         const data = Object.fromEntries(formdata.entries());
         data.imageBook = imageFile;
+        try {
+            const response = await UploadPostDataForm(data);
+            if (!response.ok) {
+                throw new Error("Fail to send data form");
+            }
+        }
+        catch (error) {
+            console.log(error.message || "Could not to send data form");
+        }
         // uploadData = data;
         // setUploadDataList((prevUploadData) => {
         //     return [...prevUploadData.filter((book) => book.idBook !== data.idBook), data];
@@ -41,11 +51,11 @@ export default function Upload() {
                                 className={styled.p + " " + styled["gayathri-bold"]}
                                 name="idBook"
                                 id="idBook"
-                                type="number"
+                                type="text"
                                 placeholder="Enter ID book..."
                                 required
-                                min="1000000000"
-                                max="9999999999"
+                                minLength="5"
+                                maxLength="10"
                             />
                         </label>
                         <label htmlFor="titleBook">
@@ -58,7 +68,7 @@ export default function Upload() {
                                 placeholder="Enter title book... "
                                 required
                                 minLength="10"
-                                maxLength="50"
+                                maxLength="20"
                             />
                         </label>
 
@@ -72,7 +82,7 @@ export default function Upload() {
                                 placeholder="Enter author book..."
                                 required
                                 minLength="10"
-                                maxLength="50"
+                                maxLength="20"
                             />
                         </label>
 

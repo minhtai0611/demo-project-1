@@ -75,7 +75,7 @@ const updateContactUser = (req, res) => {
         req.body;
     try {
         pool.query(
-            "UPDATE users SET name = $1, age = $2, country = $3, email= $4, phonenumber = $5, comment = $6, termcondition = $7 WHERE name = $1",
+            "UPDATE users SET name = $1, age = $2, country = $3, email = $4, phonenumber = $5, comment = $6, termcondition = $7 WHERE name = $1 RETURNING *",
             [name, age, country, email, phoneNumber, comment, termCondition],
             (error, results) => {
                 if (error) {
@@ -90,7 +90,7 @@ const updateContactUser = (req, res) => {
 };
 const deleteContactUser = (req, res) => {
     try {
-        pool.query("DELETE FROM users WHERE name = $1", (error, results) => {
+        pool.query("DELETE FROM users WHERE name = $1 RETURNING *", (error, results) => {
             if (error) {
                 throw error;
             }

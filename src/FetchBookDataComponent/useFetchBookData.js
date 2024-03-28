@@ -4,7 +4,7 @@ export default function useFetchBookData() {
     const [isFetching, setIsFetching] = useState(false);
     const [error, setError] = useState();
     useEffect(() => {
-        async function FetchBookDataList() {
+        async function FetchBookData() {
             setIsFetching(true);
             try {
                 const response = await fetch("http://localhost:3000/api");
@@ -26,7 +26,7 @@ export default function useFetchBookData() {
                 setIsFetching(false);
             }
         }
-        FetchBookDataList();
+        FetchBookData();
     }, []);
     return {
         bookDataList,

@@ -2,10 +2,10 @@ import pkg from "pg";
 
 const { Pool } = pkg;
 const pool = new Pool({
-    user: "uploaduser",
+    user: "wishlistuser",
     host: "localhost",
-    database: "uploaddb",
-    password: "upload",
+    database: "wishlistdb",
+    password: "wishlist",
     port: 5432,
 });
 try {
@@ -22,9 +22,9 @@ try {
     pool.query(
         "DROP TABLE IF EXISTS users; \
         CREATE TABLE IF NOT EXISTS users (\
-        idBook VARCHAR(30) UNIQUE NOT NULL, \
-        titleBook VARCHAR(30) NOT NULL, authorBook VARCHAR(30) NOT NULL, \
-        imageBook VARCHAR(30) NOT NULL, termcondition VARCHAR(2))",
+        id VARCHAR(30) NOT NULL, \
+        title VARCHAR(30) NOT NULL, authors VARCHAR(30) NOT NULL, \
+        image VARCHAR(30) NOT NULL)",
         (error) => {
             if (error) {
                 throw error;
@@ -39,7 +39,7 @@ try {
 } catch (error) {
     console.log(error.message);
 }
-const getUploadUser = (req, res) => {
+const getWishlistUser = (req, res) => {
     try {
         pool.query("SELECT * FROM users", (error, results) => {
             if (error) {
@@ -51,7 +51,7 @@ const getUploadUser = (req, res) => {
         console.log(error.message);
     }
 };
-const createUploadUser = (req, res) => {
+const createWishlistUser = (req, res) => {
     const { name, age, country, email, phoneNumber, comment, termCondition } =
         req.body;
     try {
@@ -69,12 +69,12 @@ const createUploadUser = (req, res) => {
         console.log(error.message);
     }
 };
-const updateUploadUser = (req, res) => {
+const updateWishlistUser = (req, res) => {
     const { name, age, country, email, phoneNumber, comment, termCondition } =
         req.body;
     try {
         pool.query(
-            "UPDATE users SET name = $1, age = $2, country = $3, email= $4, phonenumber = $5, comment = $6, termcondition = $7 WHERE name = $1",
+            "UPDATE users SET name = $1, age = $2, country = $3, email= $4, phonenumber = $5, comment = $6, termcondition = $7 WHERE name = $1 RETURNING *",
             [name, age, country, email, phoneNumber, comment, termCondition],
             (error, results) => {
                 if (error) {
@@ -87,9 +87,9 @@ const updateUploadUser = (req, res) => {
         console.log(error.message);
     }
 };
-const deleteUploadUser = (req, res) => {
+const deleteWishlistUser = (req, res) => {
     try {
-        pool.query("DELETE FROM users WHERE name = $1", (error, results) => {
+        pool.query("DELETE FROM users WHERE name = $1 RETURNING *", (error, results) => {
             if (error) {
                 throw error;
             }
@@ -100,8 +100,8 @@ const deleteUploadUser = (req, res) => {
     }
 };
 export default {
-    getUploadUser,
-    createUploadUser,
-    updateUploadUser,
-    deleteUploadUser,
+    getWishlistUser,
+    createWishlistUser,
+    updateWishlistUser,
+    deleteWishlistUser,
 };

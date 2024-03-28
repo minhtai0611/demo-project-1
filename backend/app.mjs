@@ -3,9 +3,11 @@ import bodyParser from "body-parser";
 import express from "express";
 import process from "node:process";
 import contactQuery from "./contactQuery.mjs";
+import uploadQuery from "./uploadQuery.mjs";
+import wishlistQuery from "./wishlistQuery.mjs";
 import cors from "cors";
 import helmet from "helmet";
-import { fetchBookDataList, writeBookDataList, readBookDataList } from "./fetchBookData.mjs";
+import { fetchBookDataList, writeBookDataList, readBookDataList } from "./fetchQuery.mjs";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -30,11 +32,6 @@ app.get('/', (req, res) => {
     res.status(200).send("NodeJS + Express + PostgreSQL");
 })
 
-app.get('/contact', contactQuery.getContactUser);
-app.post('/contact', contactQuery.createContactUser);
-app.put('/contact', contactQuery.updateContactUser);
-app.delete('/contact', contactQuery.deleteContactUser);
-
 app.get("/api", async (req, res) => {
     // const readStream = await fileSystemPromise.readFile("./asset/bookDataList.json");
     // const jsonData = await JSON.parse(readStream);
@@ -42,6 +39,21 @@ app.get("/api", async (req, res) => {
     const jsonData = await readBookDataList();
     res.status(200).json(await jsonData);
 });
+
+app.get('/contact', contactQuery.getContactUser);
+app.post('/contact', contactQuery.createContactUser);
+app.put('/contact', contactQuery.updateContactUser);
+app.delete('/contact', contactQuery.deleteContactUser);
+
+app.get('/upload', uploadQuery.getUploadUser);
+app.post('/upload', uploadQuery.createUploadUser);
+app.put('/upload', uploadQuery.updateUploadUser);
+app.delete('/upload', uploadQuery.deleteUploadUser);
+
+app.get('/wishlist', wishlistQuery.getWishlistUser);
+app.post('/wishlist', wishlistQuery.createWishlistUser);
+app.put('/wishlist', wishlistQuery.updateWishlistUser);
+app.delete('/wishlist', wishlistQuery.deleteWishlistUser);
 
 app.use((req, res, next) => {
     const error = new Error('Unexpectable error got occured');

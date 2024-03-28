@@ -2,10 +2,10 @@ import pkg from "pg";
 
 const { Pool } = pkg;
 const pool = new Pool({
-    user: "wishlistuser",
+    user: "uploaduser",
     host: "localhost",
-    database: "wishlistdb",
-    password: "wishlist",
+    database: "uploaddb",
+    password: "upload",
     port: 5432,
 });
 try {
@@ -22,9 +22,9 @@ try {
     pool.query(
         "DROP TABLE IF EXISTS users; \
         CREATE TABLE IF NOT EXISTS users (\
-        id VARCHAR(30) NOT NULL, \
-        title VARCHAR(30) NOT NULL, authors VARCHAR(30) NOT NULL, \
-        image VARCHAR(30) NOT NULL)",
+        id SMALLSERIAL PRIMARY KEY, idbook VARCHAR(10) NOT NULL, \
+        titlebook VARCHAR(20) NOT NULL, authorbook VARCHAR(20) NOT NULL, \
+        imagebook VARCHAR(100) NOT NULL, termcondition VARCHAR(2))",
         (error) => {
             if (error) {
                 throw error;
@@ -39,25 +39,12 @@ try {
 } catch (error) {
     console.log(error.message);
 }
-const getWishlistUser = (req, res) => {
-    try {
-        pool.query("SELECT * FROM users", (error, results) => {
-            if (error) {
-                throw error;
-            }
-            res.status(200).json(results.rows);
-        });
-    } catch (error) {
-        console.log(error.message);
-    }
-};
-const createWishlistUser = (req, res) => {
-    const { name, age, country, email, phoneNumber, comment, termCondition } =
-        req.body;
+const getUploadUser = (req, res) => {
     try {
         pool.query(
-            "INSERT INTO users (name, age, country, email, phonenumber, comment, termcondition) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *",
-            [name, age, country, email, phoneNumber, comment, termCondition],
+            "select distinct on (idbook) idbook, titlebook, \
+        authorbook, imagebook, termcondition from users \
+        order by idbook, id desc",
             (error, results) => {
                 if (error) {
                     throw error;
@@ -69,13 +56,12 @@ const createWishlistUser = (req, res) => {
         console.log(error.message);
     }
 };
-const updateWishlistUser = (req, res) => {
-    const { name, age, country, email, phoneNumber, comment, termCondition } =
-        req.body;
+const createUploadUser = (req, res) => {
+    const { idBook, titleBook, authorBook, imageBook, termCondition } = req.body;
     try {
         pool.query(
-            "UPDATE users SET name = $1, age = $2, country = $3, email= $4, phonenumber = $5, comment = $6, termcondition = $7 WHERE name = $1",
-            [name, age, country, email, phoneNumber, comment, termCondition],
+            "INSERT INTO users (idBook, titleBook, authorBook, imageBook, termcondition) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+            [idBook, titleBook, authorBook, imageBook, termCondition],
             (error, results) => {
                 if (error) {
                     throw error;
@@ -87,21 +73,43 @@ const updateWishlistUser = (req, res) => {
         console.log(error.message);
     }
 };
-const deleteWishlistUser = (req, res) => {
+const updateUploadUser = (req, res) => {
+    const { idBook, titleBook, authorBook, imageBook, termCondition } = req.body;
     try {
-        pool.query("DELETE FROM users WHERE name = $1", (error, results) => {
-            if (error) {
-                throw error;
+        pool.query(
+            "UPDATE users SET titlebook = $2, authorbook = $3, imagebook = $4, termcondition = $5 WHERE idbook = $1 RETURNING *",
+            [idBook, titleBook, authorBook, imageBook, termCondition],
+            (error, results) => {
+                if (error) {
+                    throw error;
+                }
+                res.status(200).json(results.rows);
             }
-            res.status(200).json(results.rows);
-        });
+        );
+    } catch (error) {
+        console.log(error.message);
+    }
+};
+const deleteUploadUser = (req, res) => {
+    const { idBook } = req.body;
+    try {
+        pool.query(
+            "DELETE FROM users WHERE idBook = $1 RETURNING *",
+            [idBook],
+            (error, results) => {
+                if (error) {
+                    throw error;
+                }
+                res.status(200).json(results.rows);
+            }
+        );
     } catch (error) {
         console.log(error.message);
     }
 };
 export default {
-    getWishlistUser,
-    createWishlistUser,
-    updateWishlistUser,
-    deleteWishlistUser,
+    getUploadUser,
+    createUploadUser,
+    updateUploadUser,
+    deleteUploadUser,
 };

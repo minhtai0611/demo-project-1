@@ -1,9 +1,9 @@
 import styled from "./Contact.module.css";
 import HeaderReplica from "../HeaderReplicaComponent/HeaderReplica";
-import functionContactDataForm from "../ContactDataFormComponent/ContactDataFormComponent";
+import ContactDataForm from "../ContactDataFormComponent/ContactDataFormComponent";
 import { useState } from "react";
 export default function Contact() {
-    const [formData, setFormData] = useState();
+    const [contactData, setContactData] = useState();
     const [isSent, setIsSent] = useState(false);
     const [error, setError] = useState();
     async function functionSubmitForm(event) {
@@ -11,8 +11,8 @@ export default function Contact() {
         const formdata = new FormData(event.target);
         const data = Object.fromEntries(formdata.entries());
         try {
-            const { responseForm, responseOk } = await functionContactDataForm(data);
-            setFormData(responseForm);
+            const { responseContact, responseOk } = await ContactDataForm(data);
+            setContactData(responseContact);
             setIsSent(true);
             if (!responseOk) {
                 throw new Error("Fail to send data form");
@@ -24,7 +24,7 @@ export default function Contact() {
         }
     }
     function functionResetForm() {
-        setFormData();
+        setContactData();
         setIsSent(true);
     }
     return (
@@ -34,9 +34,9 @@ export default function Contact() {
                 <p>Contact</p>
             </section>
             <section className={styled.section}>
-                {formData && isSent && <p className={styled.p + " " + styled["gayathri-bold"] + " " + styled.green}>Your form has been sent successfully</p>}
+                {contactData && isSent && <p className={styled.p + " " + styled["gayathri-bold"] + " " + styled.green}>Your form has been sent successfully</p>}
                 {error && !isSent && <p className={styled.p + " " + styled["gayathri-bold"] + " " + styled.red}>Fail to send your form</p>}
-                {!formData && isSent && undefined}
+                {!contactData && isSent && undefined}
             </section>
             <section className={styled.section}>
                 <form
