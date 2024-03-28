@@ -42,7 +42,7 @@ export default function Upload() {
                     className={
                         styled.p + " " + styled["gayathri-bold"] + " " + styled.form
                     }
-                    onSubmit={(event) => functionSubmitForm(event)}
+                    onSubmit={async (event) => await functionSubmitForm(event)}
                 >
                     <fieldset>
                         <label htmlFor="idBook">

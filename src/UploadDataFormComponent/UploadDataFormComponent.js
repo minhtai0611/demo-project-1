@@ -9,13 +9,13 @@ export function useUploadGetDataForm() {
             try {
                 const response = await fetch("http://localhost:3000/upload");
                 if (!response.ok) {
-                    throw new Error("Fail to fetch book data");
+                    throw new Error("Fail to get book data form");
                 }
                 const jsonUploadBookData = await response.json();
                 setUploadBookData(jsonUploadBookData);
                 setIsFetching(false);
             } catch (error) {
-                setError(error.message || "Could not to fetch book data");
+                setError(error.message || "Could not to get book data form");
                 setIsFetching(false);
             }
         }

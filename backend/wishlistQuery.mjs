@@ -22,9 +22,9 @@ try {
     pool.query(
         "DROP TABLE IF EXISTS users; \
         CREATE TABLE IF NOT EXISTS users (\
-        id VARCHAR(30) NOT NULL, \
-        title VARCHAR(30) NOT NULL, authors VARCHAR(30) NOT NULL, \
-        image VARCHAR(30) NOT NULL)",
+        idunique SMALLSERIAL PRIMARY KEY, id VARCHAR(15) NOT NULL, \
+        title VARCHAR(100) NOT NULL, authors VARCHAR(100) NOT NULL, \
+        image VARCHAR(100) NOT NULL)",
         (error) => {
             if (error) {
                 throw error;
@@ -41,7 +41,9 @@ try {
 }
 const getWishlistUser = (req, res) => {
     try {
-        pool.query("SELECT * FROM users", (error, results) => {
+        pool.query("SELECT DISTINCT ON (id) id, title, \
+        authors, image FROM users \
+        ORDER BY id, idunique DESC", (error, results) => {
             if (error) {
                 throw error;
             }
@@ -52,12 +54,11 @@ const getWishlistUser = (req, res) => {
     }
 };
 const createWishlistUser = (req, res) => {
-    const { name, age, country, email, phoneNumber, comment, termCondition } =
-        req.body;
+    const { id, title, authors, image } = req.body;
     try {
         pool.query(
-            "INSERT INTO users (name, age, country, email, phonenumber, comment, termcondition) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *",
-            [name, age, country, email, phoneNumber, comment, termCondition],
+            "INSERT INTO users (id, title, authors, image) VALUES ($1, $2, $3, $4) RETURNING *",
+            [id, title, authors, image],
             (error, results) => {
                 if (error) {
                     throw error;
@@ -70,12 +71,11 @@ const createWishlistUser = (req, res) => {
     }
 };
 const updateWishlistUser = (req, res) => {
-    const { name, age, country, email, phoneNumber, comment, termCondition } =
-        req.body;
+    const { id, title, authors, image } = req.body;
     try {
         pool.query(
-            "UPDATE users SET name = $1, age = $2, country = $3, email= $4, phonenumber = $5, comment = $6, termcondition = $7 WHERE name = $1 RETURNING *",
-            [name, age, country, email, phoneNumber, comment, termCondition],
+            "UPDATE users SET title = $2, authors = $3, image = $4 WHERE id = $1 RETURNING *",
+            [id, title, authors, image],
             (error, results) => {
                 if (error) {
                     throw error;
@@ -88,13 +88,18 @@ const updateWishlistUser = (req, res) => {
     }
 };
 const deleteWishlistUser = (req, res) => {
+    const { id } = req.body;
     try {
-        pool.query("DELETE FROM users WHERE name = $1 RETURNING *", (error, results) => {
-            if (error) {
-                throw error;
+        pool.query(
+            "DELETE FROM users WHERE id = $1 RETURNING *",
+            [id],
+            (error, results) => {
+                if (error) {
+                    throw error;
+                }
+                res.status(200).json(results.rows);
             }
-            res.status(200).json(results.rows);
-        });
+        );
     } catch (error) {
         console.log(error.message);
     }

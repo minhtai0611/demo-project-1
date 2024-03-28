@@ -42,9 +42,9 @@ try {
 const getUploadUser = (req, res) => {
     try {
         pool.query(
-            "select distinct on (idbook) idbook, titlebook, \
-        authorbook, imagebook, termcondition from users \
-        order by idbook, id desc",
+            "SELECT DISTINCT ON (idbook) idbook, titlebook, \
+        authorbook, imagebook, termcondition FROM users \
+        ORDER BY idbook, id DESC",
             (error, results) => {
                 if (error) {
                     throw error;
@@ -60,7 +60,7 @@ const createUploadUser = (req, res) => {
     const { idBook, titleBook, authorBook, imageBook, termCondition } = req.body;
     try {
         pool.query(
-            "INSERT INTO users (idBook, titleBook, authorBook, imageBook, termcondition) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+            "INSERT INTO users (idbook, titlebook, authorbook, imagebook, termcondition) VALUES ($1, $2, $3, $4, $5) RETURNING *",
             [idBook, titleBook, authorBook, imageBook, termCondition],
             (error, results) => {
                 if (error) {
@@ -91,11 +91,11 @@ const updateUploadUser = (req, res) => {
     }
 };
 const deleteUploadUser = (req, res) => {
-    const { idBook } = req.body;
+    const { idbook } = req.body;
     try {
         pool.query(
-            "DELETE FROM users WHERE idBook = $1 RETURNING *",
-            [idBook],
+            "DELETE FROM users WHERE idbook = $1 RETURNING *",
+            [idbook],
             (error, results) => {
                 if (error) {
                     throw error;

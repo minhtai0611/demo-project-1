@@ -1,33 +1,23 @@
 import styled from "./AddToWishlist.module.css";
-import { wishlist } from "../SearchBookItemComponent/SearchBookItem";
-import { useState } from "react";
-import { useUploadGetDataForm } from "../UploadDataFormComponent/UploadDataFormComponent";
-// import { uploadForm } from "../UploadComponent/Upload";
+// import { wishlist } from "../SearchBookItemComponent/SearchBookItem";
+// import { useState } from "react";
+import { useWishlistGetBookData, WishlistDeleteBookData } from "../WishlistComponent/WishlistComponent";
+import { useUploadGetDataForm, UploadDeleteDataForm } from "../UploadDataFormComponent/UploadDataFormComponent";
 import HeaderReplica from "../HeaderReplicaComponent/HeaderReplica";
 export default function AddToWishlist() {
-    // const uploadFormUpdate = [
-    //     ...uploadForm.filter((book) => book.idBook !== uploadData.idBook),
-    //     uploadData,
-    // ];
     // const wishlistUpdate = [
     //     ...wishlist.filter((book) => book.id !== wishlistBookData.id),
     //     wishlistBookData,
     // ];
 
-    const [removeFromWishlist, setRemoveFromWishlist] = useState(wishlist);
-    function functionRemoveFromWishlist(bookData) {
-        setRemoveFromWishlist((prevBookWishlist) => {
-            return [...prevBookWishlist.filter((book) => book.id !== bookData.id)];
-        });
+    const { wishlistBookData } = useWishlistGetBookData();
+    async function functionRemoveFromWishlist(bookData) {
+        return await WishlistDeleteBookData(bookData);
     }
     const { uploadBookData } = useUploadGetDataForm();
-    // function functionRemoveFromUpload(bookData) {
-    //     setRemoveFromUpload((prevBookUpload) => {
-    //         return [
-    //             ...prevBookUpload.filter((book) => book.idBook !== bookData.idBook),
-    //         ];
-    //     });
-    // }
+    async function functionRemoveFromUpload(bookData) {
+        return await UploadDeleteDataForm(bookData);
+    }
     return (
         <>
             <HeaderReplica />
@@ -35,11 +25,11 @@ export default function AddToWishlist() {
                 <p>Wishlist</p>
             </section>
             <ul className={styled.ul}>
-                {removeFromWishlist.map((bookData) => (
+                {wishlistBookData.map((bookData) => (
                     <li key={bookData.id}>
                         <img
                             src={bookData.image}
-                            alt="image1"
+                            alt="imageWishlist"
                             className={styled.img}
                             decoding="async"
                             loading="lazy"
@@ -64,8 +54,8 @@ export default function AddToWishlist() {
                                 styled.p + " " + styled["gayathri-bold"] + " " + styled.button
                             }
                             type="button"
-                            onClick={() => {
-                                functionRemoveFromWishlist(bookData);
+                            onClick={async () => {
+                                await functionRemoveFromWishlist(bookData);
                             }}
                         >
                             Remove from wishlist
@@ -81,7 +71,7 @@ export default function AddToWishlist() {
                     <li key={bookData.idbook}>
                         <img
                             src={bookData.imagebook}
-                            alt="image1"
+                            alt="imageUpload"
                             className={styled.img}
                             decoding="async"
                             loading="lazy"
@@ -102,6 +92,9 @@ export default function AddToWishlist() {
                         <button
                             className={styled.p + " " + styled["gayathri-bold"] + " " + styled.button}
                             type="button"
+                            onClick={async () => {
+                                await functionRemoveFromUpload(bookData);
+                            }}
                         >
                             Remove from uploadlist
                         </button>
