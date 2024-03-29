@@ -1,15 +1,9 @@
 import styled from "./AddToWishlist.module.css";
-// import { wishlist } from "../SearchBookItemComponent/SearchBookItem";
-// import { useState } from "react";
 import { useWishlistGetBookData, WishlistDeleteBookData } from "../WishlistComponent/WishlistComponent";
 import { useUploadGetDataForm, UploadDeleteDataForm } from "../UploadDataFormComponent/UploadDataFormComponent";
+import { PublishPostBookData } from "../PublishComponent/PublishComponent";
 import HeaderReplica from "../HeaderReplicaComponent/HeaderReplica";
 export default function AddToWishlist() {
-    // const wishlistUpdate = [
-    //     ...wishlist.filter((book) => book.id !== wishlistBookData.id),
-    //     wishlistBookData,
-    // ];
-
     const { wishlistBookData } = useWishlistGetBookData();
     async function functionRemoveFromWishlist(bookData) {
         return await WishlistDeleteBookData(bookData);
@@ -17,6 +11,9 @@ export default function AddToWishlist() {
     const { uploadBookData } = useUploadGetDataForm();
     async function functionRemoveFromUpload(bookData) {
         return await UploadDeleteDataForm(bookData);
+    }
+    async function functionPublishFromUpload(bookData) {
+        return await PublishPostBookData(bookData);
     }
     return (
         <>
@@ -85,6 +82,9 @@ export default function AddToWishlist() {
                         <button
                             className={styled.p + " " + styled["gayathri-bold"] + " " + styled.button}
                             type="button"
+                            onClick={async () => {
+                                await functionPublishFromUpload(bookData);
+                            }}
                         >
                             Publish on platform
                         </button>

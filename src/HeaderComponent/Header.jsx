@@ -4,13 +4,24 @@ import { Link } from "react-router-dom";
 import useFetchBookData from "../FetchBookDataComponent/useFetchBookData";
 import { useState } from "react";
 import Search from "../SearchComponent/Search";
+import { usePublishGetBookData } from "../PublishComponent/PublishComponent";
 export default function Header() {
     const { bookDataList, isFetching, error } = useFetchBookData();
+    const { publishBookDataList } = usePublishGetBookData();
+    const publishBookDataListMatch = publishBookDataList.map((bookData) => {
+        return {
+            id: bookData.idbook,
+            title: bookData.titlebook,
+            authors: bookData.authorbook,
+            image: bookData.imagebook
+        }
+    })
+    let bookDataListFinal = [...publishBookDataListMatch, ...bookDataList];
     const [filterBookQuery, setFilterBookQuery] = useState("");
     function functionChangeInput(event) {
         setFilterBookQuery(event.target.value);
     }
-    const filterResult = bookDataList.filter((bookData) =>
+    const filterResult = bookDataListFinal.filter((bookData) =>
         bookData.title.toLowerCase().includes(filterBookQuery.toLowerCase())
     )
     return (

@@ -5,6 +5,7 @@ import process from "node:process";
 import contactQuery from "./contactQuery.mjs";
 import uploadQuery from "./uploadQuery.mjs";
 import wishlistQuery from "./wishlistQuery.mjs";
+import publishQuery from "./publishQuery.mjs";
 import cors from "cors";
 import helmet from "helmet";
 import { fetchBookDataList, writeBookDataList, readBookDataList } from "./fetchQuery.mjs";
@@ -54,6 +55,11 @@ app.get('/wishlist', wishlistQuery.getWishlistUser);
 app.post('/wishlist', wishlistQuery.createWishlistUser);
 app.put('/wishlist', wishlistQuery.updateWishlistUser);
 app.delete('/wishlist', wishlistQuery.deleteWishlistUser);
+
+app.get('/publish', publishQuery.getPublishUser);
+app.post('/publish', publishQuery.createPublishUser);
+app.put('/publish', publishQuery.updatePublishUser);
+app.delete('/publish', publishQuery.deletePublishUser);
 
 app.use((req, res, next) => {
     const error = new Error('Unexpectable error got occured');
