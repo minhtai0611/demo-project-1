@@ -37,7 +37,7 @@ export default function AddToWishlist() {
                         <p className={styled.p + " " + styled["gayathri-bold"]}>
                             {bookData.authors}
                         </p>
-                        <button
+                        {/* <button
                             className={
                                 styled.p + " " + styled["gayathri-bold"] + " " + styled.button
                             }
@@ -45,7 +45,7 @@ export default function AddToWishlist() {
                         >
                             Read book
                         </button>
-                        <br />
+                        <br /> */}
                         <button
                             className={
                                 styled.p + " " + styled["gayathri-bold"] + " " + styled.button

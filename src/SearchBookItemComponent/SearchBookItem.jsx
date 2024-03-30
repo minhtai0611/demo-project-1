@@ -1,5 +1,6 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/prop-types */
+import { Link } from "react-router-dom";
 import styled from "./SearchBookItem.module.css";
 import { WishlistPostBookData } from "../WishlistComponent/WishlistComponent";
 export default function SearchBookItem({ bookData }) {
@@ -33,7 +34,9 @@ export default function SearchBookItem({ bookData }) {
                     }
                     type="button"
                 >
-                    Read book
+                    <Link to="/pricing" className={styled.a}>
+                        Read book
+                    </Link>
                 </button>
                 <br />
                 <button

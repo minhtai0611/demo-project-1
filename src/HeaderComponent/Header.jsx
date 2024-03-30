@@ -8,15 +8,15 @@ import { usePublishGetBookData } from "../PublishComponent/PublishComponent";
 export default function Header() {
     const { bookDataList, isFetching, error } = useFetchBookData();
     const { publishBookDataList } = usePublishGetBookData();
-    const publishBookDataListMatch = publishBookDataList.map((bookData) => {
+    const publishBookDataListMatch = [...publishBookDataList.map((bookData) => {
         return {
             id: bookData.idbook,
             title: bookData.titlebook,
             authors: bookData.authorbook,
             image: bookData.imagebook
         }
-    }).filter((publishBook) => publishBook.id !== bookDataList.filter((book) => book.id === publishBook.id).id);
-    let bookDataListFinal = [...publishBookDataListMatch, ...bookDataList];
+    })];
+    const bookDataListFinal = [...publishBookDataListMatch, ...bookDataList];
     const [filterBookQuery, setFilterBookQuery] = useState("");
     function functionChangeInput(event) {
         setFilterBookQuery(event.target.value);
@@ -45,7 +45,7 @@ export default function Header() {
                             placeholder="Search ebooks, magazines and more..."
                             minLength="5"
                             maxLength="20"
-                            onChange={functionChangeInput}
+                            onChange={(event) => functionChangeInput(event)}
                         />
                         {/* <Link
                             to="/"
