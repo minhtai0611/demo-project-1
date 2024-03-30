@@ -39,12 +39,12 @@ export async function fetchBookDataList() {
         console.log(error.message || "Could not to fetch book data");
     }
 }
-export function writeBookDataList(jsonBookDataList) {
+export async function writeBookDataList(jsonBookDataList) {
     try {
         const writeStream = fileSystem.createWriteStream(
             "./asset/bookDataList.json"
         );
-        writeStream.write(JSON.stringify(jsonBookDataList), (error) => {
+        writeStream.write(JSON.stringify(await jsonBookDataList), (error) => {
             if (error) {
                 throw new Error("Fail to write data to JSON file");
             }

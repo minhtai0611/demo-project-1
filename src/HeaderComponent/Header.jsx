@@ -15,7 +15,7 @@ export default function Header() {
             authors: bookData.authorbook,
             image: bookData.imagebook
         }
-    })
+    }).filter((publishBook) => publishBook.id !== bookDataList.filter((book) => book.id === publishBook.id).id);
     let bookDataListFinal = [...publishBookDataListMatch, ...bookDataList];
     const [filterBookQuery, setFilterBookQuery] = useState("");
     function functionChangeInput(event) {

@@ -6,6 +6,7 @@ import contactQuery from "./contactQuery.mjs";
 import uploadQuery from "./uploadQuery.mjs";
 import wishlistQuery from "./wishlistQuery.mjs";
 import publishQuery from "./publishQuery.mjs";
+import { postBookDataList } from "./dataQuery.mjs";
 import cors from "cors";
 import helmet from "helmet";
 import { fetchBookDataList, writeBookDataList, readBookDataList } from "./fetchQuery.mjs";
@@ -27,7 +28,8 @@ app.use((req, res, next) => {
 });
 
 const jsonBookDataList = await fetchBookDataList();
-writeBookDataList(jsonBookDataList);
+await writeBookDataList(jsonBookDataList);
+await postBookDataList();
 
 app.get('/', (req, res) => {
     res.status(200).send("NodeJS + Express + PostgreSQL");

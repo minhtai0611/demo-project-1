@@ -1,3 +1,4 @@
+// import { readBookDataList } from "./fetchQuery.mjs";
 import pkg from "pg";
 
 const { Pool } = pkg;
@@ -24,7 +25,8 @@ try {
         CREATE TABLE IF NOT EXISTS users (\
         id SMALLSERIAL PRIMARY KEY, idbook VARCHAR(10) NOT NULL, \
         titlebook VARCHAR(20) NOT NULL, authorbook VARCHAR(20) NOT NULL, \
-        imagebook VARCHAR(100) NOT NULL, termcondition VARCHAR(2))",
+        imagebook VARCHAR(100) NOT NULL, termcondition VARCHAR(2)); \
+        CREATE EXTENSION IF NOT EXISTS dblink",
         (error) => {
             if (error) {
                 throw error;
@@ -39,11 +41,18 @@ try {
 } catch (error) {
     console.log(error.message);
 }
+// const jsonBookDataList = await readBookDataList();
+// const bookDataList = await jsonBookDataList.books;
 const getPublishUser = (req, res) => {
     try {
         pool.query(
-            "SELECT DISTINCT ON (idbook) idbook, titlebook, \
-        authorbook, imagebook, termcondition FROM users \
+            "SELECT DISTINCT ON(idbook) * \
+        FROM users \
+        WHERE NOT EXISTS(SELECT id \
+		FROM dblink('dbname=bookdatadb user=bookdata password=bookdata', \
+        'SELECT id, title, authors, image from bookdata') AS \
+        bookdata(id varchar, title varchar, authors varchar, image varchar) \
+		WHERE idbook = id) \
         ORDER BY idbook, id DESC",
             (error, results) => {
                 if (error) {

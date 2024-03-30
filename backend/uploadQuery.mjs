@@ -42,9 +42,8 @@ try {
 const getUploadUser = (req, res) => {
     try {
         pool.query(
-            "SELECT DISTINCT ON (idbook) idbook, titlebook, \
-        authorbook, imagebook, termcondition FROM users \
-        ORDER BY idbook, id DESC",
+            "SELECT DISTINCT ON (idbook) * FROM users \
+            ORDER BY idbook, id DESC",
             (error, results) => {
                 if (error) {
                     throw error;
