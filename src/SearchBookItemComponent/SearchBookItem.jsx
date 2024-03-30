@@ -5,10 +5,7 @@ import { WishlistPostBookData } from "../WishlistComponent/WishlistComponent";
 export default function SearchBookItem({ bookData }) {
     async function functionAddToWishlist(bookDataSearch) {
         try {
-            const response = await WishlistPostBookData(bookDataSearch);
-            if (!response.ok) {
-                throw new Error("Fail to send data form");
-            }
+            await WishlistPostBookData(bookDataSearch);
         }
         catch (error) {
             console.log(error.message || "Could not to send data form");
