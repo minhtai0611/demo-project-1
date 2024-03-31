@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prestart": "babel app.mjs --out-dir buildApp",
-    "start": "node ./buildApp",
-    "startdev": "npx nodemon --exec babel-node app.mjs"
+    "prestart": "babel ./src --out-dir build",
+    "start": "node ./build",
+    "startdev": "npx nodemon --exec babel-node ./src/app.mjs"
   },
   "author": "",
   "license": "ISC",
