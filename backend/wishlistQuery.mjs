@@ -23,7 +23,7 @@ try {
         "DROP TABLE IF EXISTS users; \
         CREATE TABLE IF NOT EXISTS users (\
         idunique SMALLSERIAL PRIMARY KEY, id VARCHAR(15) NOT NULL, \
-        title VARCHAR(100) NOT NULL, authors VARCHAR(100) NOT NULL, \
+        title VARCHAR(200) NOT NULL, authors VARCHAR(200) NOT NULL, \
         image VARCHAR(100) NOT NULL)",
         (error) => {
             if (error) {
