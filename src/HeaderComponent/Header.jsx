@@ -18,12 +18,23 @@ export default function Header() {
     })];
     const bookDataListFinal = [...publishBookDataListMatch, ...bookDataList];
     const [filterBookQuery, setFilterBookQuery] = useState("");
+    const [filterSearch, setFilterSearch] = useState([]);
     function functionChangeInput(event) {
         setFilterBookQuery(event.target.value);
     }
-    const filterResult = bookDataListFinal.filter((bookData) =>
-        bookData.title.toLowerCase().includes(filterBookQuery.toLowerCase())
-    )
+    function functionFilterSearchKeyDown(event) {
+        if (event.key === "Enter") {
+            functionFilterSearch();
+        }
+    }
+    function functionFilterSearch() {
+        setFilterSearch(bookDataListFinal.filter((bookData) =>
+            bookData.title.toLowerCase().includes(filterBookQuery.toLowerCase())
+        ));
+    }
+    // const filterResult = bookDataListFinal.filter((bookData) =>
+    //     bookData.title.toLowerCase().includes(filterBookQuery.toLowerCase())
+    // )
     return (
         <>
             <header className={styled.header + " " + styled.all}>
@@ -46,8 +57,9 @@ export default function Header() {
                             minLength="5"
                             maxLength="20"
                             onChange={(event) => functionChangeInput(event)}
+                            onKeyDown={(event) => functionFilterSearchKeyDown(event)}
                         />
-                        {/* <Link
+                        <Link
                             to="/"
                             className={
                                 styled.a + " " + styled.all + " " + styled.headerNavAll
@@ -63,10 +75,11 @@ export default function Header() {
                                     " " +
                                     styled.all
                                 }
+                                onClick={(event) => functionFilterSearch(event)}
                             >
                                 <i className="fa fa-search" />
                             </button>
-                        </Link> */}
+                        </Link>
                         <ul className={styled.headerNavAll + " " + styled.ul}>
                             <li className={styled.headerLi + " " + styled.headerNavAll}>
                                 <Link
@@ -127,7 +140,7 @@ export default function Header() {
                 {!isFetching && !error && <p>Book list is up to date</p>}
                 {!isFetching && error && <p>Fail to fetch book data</p>}
             </section>
-            <Search bookDataList={filterResult} />
+            {!isFetching && <Search bookDataList={bookDataListFinal} /> && <Search bookDataList={filterSearch} />}
         </>
     );
 }

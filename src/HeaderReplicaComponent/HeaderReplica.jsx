@@ -24,7 +24,7 @@ export default function HeaderReplica() {
                             minLength="5"
                             maxLength="20"
                         />
-                        {/* <Link
+                        <Link
                             to="/"
                             className={
                                 styled.a + " " + styled.all + " " + styled.headerNavAll
@@ -43,7 +43,7 @@ export default function HeaderReplica() {
                             >
                                 <i className="fa fa-search" />
                             </button>
-                        </Link> */}
+                        </Link>
                         <ul className={styled.headerNavAll + " " + styled.ul}>
                             <li className={styled.headerLi + " " + styled.headerNavAll}>
                                 <Link

@@ -14,7 +14,10 @@ export default function Upload() {
         const data = Object.fromEntries(formdata.entries());
         data.imageBook = imageFile;
         try {
-            await UploadPostDataForm(data);
+            const response = await UploadPostDataForm(data);
+            if (!response.ok) {
+                throw new Error("Fail to send data form");
+            }
         }
         catch (error) {
             console.log(error.message || "Could not to send data form");

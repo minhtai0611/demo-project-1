@@ -13,7 +13,7 @@ export default function useFetchBookData() {
                 }
                 const jsonBookDataList = await response.json();
                 setBookDataList(
-                    jsonBookDataList.books.filter(
+                    await jsonBookDataList.books.filter(
                         (bookData, index, array) =>
                             array.findIndex(
                                 (otherBookData) => bookData.id === otherBookData.id
