@@ -26,9 +26,10 @@
 .table {
   border-collapse: collapse;
 }
-.table th, .table td{
+.table th,
+.table td {
   border-left: 0.3rem solid gold;
-  border-right: 0.3rem solid gold
+  border-right: 0.3rem solid gold;
 }
 .table th {
   text-align: center;
@@ -40,20 +41,23 @@
   padding: 0 1.5rem 0 1.5rem;
   line-height: 2rem;
 }
-.table th:nth-child(1), .table td:nth-child(1){
-  background-color:forestgreen;
+.table th:nth-child(1),
+.table td:nth-child(1) {
+  background-color: forestgreen;
 }
-.table th:nth-child(2), .table td:nth-child(2){
-  background-color:navy;
+.table th:nth-child(2),
+.table td:nth-child(2) {
+  background-color: navy;
   margin: 0 5rem 0 5rem;
 }
-.table th:nth-child(3), .table td:nth-child(3){
-  background-color:indigo;
+.table th:nth-child(3),
+.table td:nth-child(3) {
+  background-color: indigo;
 }
-.table tr:nth-last-child(2) td{
-    border-bottom: 0.3rem solid gold;
+.table tr:nth-last-child(2) td {
+  border-bottom: 0.3rem solid gold;
 }
-.table tr:nth-last-child(1) td{
+.table tr:nth-last-child(1) td {
   background-color: transparent;
   border-left: none;
   border-right: none;
@@ -64,7 +68,7 @@
   width: 20rem;
   height: 2.5rem;
   font-size: 1.5rem;
-  background-color:firebrick;
+  background-color: firebrick;
   outline: none;
   border: none;
   color: papayawhip;

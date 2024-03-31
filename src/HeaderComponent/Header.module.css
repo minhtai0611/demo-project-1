@@ -3,10 +3,10 @@
   font-family: Lilita One;
   font-weight: 400;
   font-style: normal;
-  font-size: xx-large;
+  font-size: 2rem;
   color: gold;
 }
-.section{
+.section {
   font-size: 4.5rem;
   color: lightskyblue;
   text-align: center;
@@ -17,6 +17,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   row-gap: 7rem;
+  -webkit-padding-start: 0;
   padding-inline-start: 0;
   text-align: center;
   justify-content: center;
@@ -83,3 +84,4 @@
   display: inline;
   cursor: pointer;
 }
+

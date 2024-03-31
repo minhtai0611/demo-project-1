@@ -11,18 +11,19 @@
 .img {
   height: 23rem;
   width: 23rem;
+  -o-object-fit: fill;
   object-fit: fill;
 }
-.button{
+.button {
   padding: 1rem 0.5rem;
-  background-color:seagreen;
+  background-color: seagreen;
   outline: none;
   border: none;
   margin: 0.5rem 0;
   border-radius: 1rem;
 }
-.button:hover{
-  background-color:dodgerblue;
+.button:hover {
+  background-color: dodgerblue;
   cursor: pointer;
 }
 .a {

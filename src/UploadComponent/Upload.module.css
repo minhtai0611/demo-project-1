@@ -53,6 +53,8 @@
   position: relative;
   cursor: pointer;
   margin-top: 8rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
   appearance: none;
   width: 2rem;
   height: 2rem;
@@ -70,6 +72,7 @@
 }
 .form input[type="number"]::-webkit-inner-spin-button,
 .form input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
   appearance: none;
   margin: 0;
 }
@@ -106,7 +109,9 @@
   cursor: pointer;
 }
 .form fieldset {
+  -webkit-margin-start: 0;
   margin-inline-start: 0;
+  -webkit-margin-end: 0;
   margin-inline-end: 0;
   border-bottom-width: 0;
   border-top-width: 0;

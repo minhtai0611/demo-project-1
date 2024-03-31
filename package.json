@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "frontend": "npm run dev",
     "backend": "cd backend & npm run startdev",
-    "combine": "concurrently -n \"React,Express\" -c \"cyan,magenta\" -p \"[{name}]\" -k \"npm run frontend\" \"npm run backend\""
+    "combine": "concurrently -n \"React,Express\" -c \"cyan,magenta\" -p \"[{name}]\" -k \"npm run frontend\" \"npm run backend\"",
+    "combinebuild": "concurrently -n \"ReactBuild,ExpressBuild\" -c \"cyan,magenta\" -p \"[{name}]\" -k \"npm run build\" \"npm run backend\""
   },
   "dependencies": {
     "concurrently": "^8.2.2",
