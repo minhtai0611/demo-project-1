@@ -12,10 +12,11 @@
     "backend": "cd backend & npm run startdev",
     "backendbuild": "cd backend & npm run prestart & npm run start",
     "combine": "concurrently -n \"React,Express\" -c \"cyan,magenta\" -p \"[{name}]\" -k \"npm run frontend\" \"npm run backend\"",
-    "combinebuild": "concurrently -n \"ReactBuild,ExpressBuild\" -c \"cyan,magenta\" -p \"[{name}]\" -k \"npm run build\" \"npm run backendbuild\""
+    "combinebuild": "concurrently -n \"ReactBuild,ExpressBuild\" -c \"cyan,magenta\" -p \"[{name}]\" \"npm run build\" \"npm run backendbuild\""
   },
   "dependencies": {
     "concurrently": "^8.2.2",
+    "million": "^3.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3"
@@ -28,7 +29,6 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
-    "npm-run-all": "^4.1.5",
     "vite": "^5.1.4"
   }
 }

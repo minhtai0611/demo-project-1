@@ -3,7 +3,7 @@
     "package.json",
     "nodemon.json",
     ".babelrc",
-    "./app.mjs"
+    "./src/app.mjs"
   ],
   "verbose": true,
   "ignore": ["*.test.js", "*.spec.js"]
