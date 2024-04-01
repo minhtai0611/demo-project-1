@@ -1,4 +1,3 @@
-// import { readBookDataList } from "./fetchQuery.mjs";
 import pkg from "pg";
 
 const { Pool } = pkg;

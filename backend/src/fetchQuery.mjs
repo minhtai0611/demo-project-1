@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import fileSystem from "node:fs";
 export async function fetchBookDataList() {
     try {
