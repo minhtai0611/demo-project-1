@@ -9,12 +9,13 @@ import {
 } from "../UploadDataFormComponent/UploadDataFormComponent";
 import { PublishPostBookData } from "../PublishComponent/PublishComponent";
 import HeaderReplica from "../HeaderReplicaComponent/HeaderReplica";
-import { useQuery, useMutation } from "@tanstack/react-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 export default function AddToWishlist() {
+    const queryClient = useQueryClient();
     const {
         data: wishlistData,
-        isError: isWishlistError,
-        isPending: isWishlistPending,
+        // isError: isWishlistError,
+        // isPending: isWishlistPending,
         isSuccess: isWishlistSuccess,
     } = useQuery({
         queryKey: ["wishlist"],
@@ -22,27 +23,50 @@ export default function AddToWishlist() {
     });
     const {
         mutate: wishlistDataMutate,
-        isError: isWishlistMutateError,
-        isPending: isWishlistMutatePending,
-        isSuccess: isWishlistMutateSuccess,
-    } = useMutation({ mutationFn: async (bookData) => await WishlistDeleteBookData(bookData) });
+        // isError: isWishlistMutateError,
+        // isPending: isWishlistMutatePending,
+        // isSuccess: isWishlistMutateSuccess,
+    } = useMutation({
+        mutationFn: async (bookData) => await WishlistDeleteBookData(bookData),
+        onSuccess: () => queryClient.invalidateQueries({ queryKey: ["wishlist"] }),
+    });
     function functionRemoveFromWishlist(bookData) {
-        wishlistDataMutate({ bookData });
+        return wishlistDataMutate({ id: bookData.id });
     }
+
     const {
         data: uploadData,
-        isError: isUploadError,
-        isPending: isUploadPending,
+        // isError: isUploadError,
+        // isPending: isUploadPending,
         isSuccess: isUploadSuccess,
     } = useQuery({
         queryKey: ["upload"],
         queryFn: async () => await UploadGetDataForm(),
     });
-    async function functionRemoveFromUpload(bookData) {
-        return await UploadDeleteDataForm(bookData);
+    const {
+        mutate: uploadDataMutate,
+        // isError: isUploadMutateError,
+        // isPending: isUploadMutatePending,
+        // isSuccess: isUploadMutateSuccess,
+    } = useMutation({
+        mutationFn: async (bookData) => await UploadDeleteDataForm(bookData),
+        onSuccess: () => queryClient.invalidateQueries({ queryKey: ["upload"] }),
+    });
+    function functionRemoveFromUpload(bookData) {
+        return uploadDataMutate({ idbook: bookData.idbook });
     }
-    async function functionPublishFromUpload(bookData) {
-        return await PublishPostBookData(bookData);
+
+    const {
+        mutate: publishDataMutate,
+        // isError: isPublishMutateError,
+        // isPending: isPublishMutatePending,
+        // isSuccess: isPublishMutateSuccess,
+    } = useMutation({
+        mutationFn: async (bookData) => await PublishPostBookData(bookData),
+        onSuccess: () => queryClient.invalidateQueries({ queryKey: ["publish"] }),
+    });
+    function functionPublishFromUpload(bookData) {
+        return publishDataMutate(bookData);
     }
     return (
         <>
@@ -115,8 +139,8 @@ export default function AddToWishlist() {
                                     styled.p + " " + styled["gayathri-bold"] + " " + styled.button
                                 }
                                 type="button"
-                                onClick={async () => {
-                                    await functionPublishFromUpload(bookData);
+                                onClick={() => {
+                                    functionPublishFromUpload(bookData);
                                 }}
                             >
                                 Publish on platform
@@ -127,8 +151,8 @@ export default function AddToWishlist() {
                                     styled.p + " " + styled["gayathri-bold"] + " " + styled.button
                                 }
                                 type="button"
-                                onClick={async () => {
-                                    await functionRemoveFromUpload(bookData);
+                                onClick={() => {
+                                    functionRemoveFromUpload(bookData);
                                 }}
                             >
                                 Remove from uploadlist

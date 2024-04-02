@@ -37,22 +37,34 @@ export async function UploadGetDataForm() {
     return await jsonUploadBookData;
 }
 export async function UploadPostDataForm(data) {
-    try {
-        const response = await fetch("http://localhost:3000/upload", {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
-        if (!response.ok) {
-            throw new Error("Fail to post data form");
-        }
-        const responseUpload = await response.json();
-        return responseUpload;
-    } catch (error) {
-        console.log(error.message || "Could not to post data form");
+    // try {
+    //     const response = await fetch("http://localhost:3000/upload", {
+    //         method: "POST",
+    //         body: JSON.stringify(data),
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //     });
+    //     if (!response.ok) {
+    //         throw new Error("Fail to post data form");
+    //     }
+    //     const responseUpload = await response.json();
+    //     return responseUpload;
+    // } catch (error) {
+    //     console.log(error.message || "Could not to post data form");
+    // }
+    const response = await fetch("http://localhost:3000/upload", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+    if (!response.ok) {
+        throw new Error("Fail to post data form");
     }
+    const responseUpload = await response.json();
+    return await responseUpload;
 }
 export async function UploadPutDataForm(data) {
     try {

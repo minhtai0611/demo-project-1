@@ -37,22 +37,34 @@ export async function PublishGetBookData() {
     return await jsonPublishBookData;
 }
 export async function PublishPostBookData(data) {
-    try {
-        const response = await fetch("http://localhost:3000/publish", {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
-        if (!response.ok) {
-            throw new Error("Fail to post book data");
-        }
-        const responsePublish = await response.json();
-        return responsePublish;
-    } catch (error) {
-        console.log(error.message || "Could not to post book data");
+    // try {
+    //     const response = await fetch("http://localhost:3000/publish", {
+    //         method: "POST",
+    //         body: JSON.stringify(data),
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //     });
+    //     if (!response.ok) {
+    //         throw new Error("Fail to post book data");
+    //     }
+    //     const responsePublish = await response.json();
+    //     return responsePublish;
+    // } catch (error) {
+    //     console.log(error.message || "Could not to post book data");
+    // }
+    const response = await fetch("http://localhost:3000/publish", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+    if (!response.ok) {
+        throw new Error("Fail to post book data");
     }
+    const responsePublish = await response.json();
+    return await responsePublish;
 }
 export async function PublishPutBookData(data) {
     try {

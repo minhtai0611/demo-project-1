@@ -3,10 +3,11 @@ import { useState } from "react";
 import styled from "./Upload.module.css";
 import HeaderReplica from "../HeaderReplicaComponent/HeaderReplica";
 import { UploadPostDataForm } from "../UploadDataFormComponent/UploadDataFormComponent";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 export default function Upload() {
     const [imageFile, setImageFile] = useState();
     function functionImageFile(event) {
-        setImageFile(URL.createObjectURL(event.target.files[0]));
+        setImageFile(() => URL.createObjectURL(event.target.files[0]));
     }
     async function functionSubmitForm(event) {
         event.preventDefault();
