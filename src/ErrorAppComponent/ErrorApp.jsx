@@ -8,7 +8,7 @@ export default function ErrorApp() {
             <HeaderReplica />
             <div className={styled.all}>
                 <p>
-                    <i className={styled.i}>Sorry, this page you looked for that is {(error.statusText ? error.statusText : error.message).toLowerCase()} now ☹</i>
+                    <i className={styled.i}>☹ {(error.statusText ? error.statusText : error.message).toLowerCase()}</i>
                     <br />
                     <Link to="/" className={styled.a}>Return to Home Page</Link>
                 </p>

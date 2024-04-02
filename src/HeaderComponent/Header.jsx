@@ -1,24 +1,36 @@
 import logo from "../assets/logo-book.png";
 import styled from "./Header.module.css";
 import { Link } from "react-router-dom";
-import useFetchBookData from "../FetchBookDataComponent/useFetchBookData";
+import FetchBookData from "../FetchBookDataComponent/FetchBookData";
 import { useState } from "react";
 import Search from "../SearchComponent/Search";
-import { usePublishGetBookData } from "../PublishComponent/PublishComponent";
+import { PublishGetBookData } from "../PublishComponent/PublishComponent";
+import { useQuery } from "@tanstack/react-query";
 export default function Header() {
-    const { bookDataList, isFetching, error } = useFetchBookData();
-    const { publishBookDataList } = usePublishGetBookData();
-    const publishBookDataListMatch = [...publishBookDataList.map((bookData) => {
-        return {
-            id: bookData.idbook,
-            title: bookData.titlebook,
-            authors: bookData.authorbook,
-            image: bookData.imagebook
-        }
-    })];
-    const bookDataListFinal = [...publishBookDataListMatch, ...bookDataList];
+    const { data, isError, isPending, isSuccess } = useQuery({
+        queryKey: ["api"],
+        queryFn: async () => await FetchBookData(),
+    });
+    const {
+        data: publishData,
+        isError: isPublishError,
+        isPending: isPublishPending,
+        isSuccess: isPublishSuccess,
+    } = useQuery({
+        queryKey: ["publish"],
+        queryFn: async () => await PublishGetBookData(),
+    });
+    // const publishDataMatch = [...publishData.map((bookData) => {
+    //     return {
+    //         id: bookData.idbook,
+    //         title: bookData.titlebook,
+    //         authors: bookData.authorbook,
+    //         image: bookData.imagebook
+    //     }
+    // })];
+    // const bookDataListFinal = [...publishDataMatch, ...data];
     const [filterBookQuery, setFilterBookQuery] = useState("");
-    const [filterSearch, setFilterSearch] = useState([]);
+    //const [filterSearch, setFilterSearch] = useState([]);
     function functionChangeInput(event) {
         setFilterBookQuery(event.target.value);
     }
@@ -28,9 +40,19 @@ export default function Header() {
         }
     }
     function functionFilterSearch() {
-        setFilterSearch(bookDataListFinal.filter((bookData) =>
+        [
+            ...publishData.map((bookData) => {
+                return {
+                    id: bookData.idbook,
+                    title: bookData.titlebook,
+                    authors: bookData.authorbook,
+                    image: bookData.imagebook,
+                };
+            }),
+            ...data,
+        ].filter((bookData) =>
             bookData.title.toLowerCase().includes(filterBookQuery.toLowerCase())
-        ));
+        );
     }
     // const filterResult = bookDataListFinal.filter((bookData) =>
     //     bookData.title.toLowerCase().includes(filterBookQuery.toLowerCase())
@@ -136,11 +158,29 @@ export default function Header() {
                 </nav>
             </header>
             <section className={styled.all + " " + styled.section}>
-                {isFetching && <p>Loading to fetch book data, please wait...</p>}
-                {!isFetching && !error && <p>Book list is up to date</p>}
-                {!isFetching && error && <p>Fail to fetch book data</p>}
+                {isPending && isPublishPending && (
+                    <p>Loading to fetch book data, please wait...</p>
+                )}
+                {isSuccess && isPublishSuccess && <p>Book list is up to date</p>}
+                {isError && isPublishError && <p>Fail to fetch book data</p>}
             </section>
-            {!isFetching && <Search bookDataList={bookDataListFinal} /> && <Search bookDataList={filterSearch} />}
+            {isSuccess && isPublishSuccess && (
+                <Search
+                    bookDataList={[
+                        ...publishData.map((bookData) => {
+                            return {
+                                id: bookData.idbook,
+                                title: bookData.titlebook,
+                                authors: bookData.authorbook,
+                                image: bookData.imagebook,
+                            };
+                        }),
+                        ...data,
+                    ].filter((bookData) =>
+                        bookData.title.toLowerCase().includes(filterBookQuery.toLowerCase())
+                    )}
+                />
+            )}
         </>
     );
 }

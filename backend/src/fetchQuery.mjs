@@ -60,7 +60,7 @@ export async function readBookDataList() {
             chunkStream += chunk;
         }
         const jsonData = await JSON.parse(chunkStream);
-        return jsonData;
+        return await jsonData;
     } catch (error) {
         console.log(error.message);
     }

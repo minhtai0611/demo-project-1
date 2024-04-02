@@ -1,34 +1,40 @@
-import { useEffect, useState } from "react";
-export function useUploadGetDataForm() {
-    const [uploadBookData, setUploadBookData] = useState([]);
-    const [isFetching, setIsFetching] = useState(false);
-    const [error, setError] = useState();
-    useEffect(() => {
-        async function UploadBookData() {
-            setIsFetching(true);
-            try {
-                const response = await fetch("http://localhost:3000/upload");
-                if (!response.ok) {
-                    throw new Error("Fail to get book data form");
-                }
-                const jsonUploadBookData = await response.json();
-                setUploadBookData(jsonUploadBookData);
-                setIsFetching(false);
-            } catch (error) {
-                setError(error.message || "Could not to get book data form");
-                setIsFetching(false);
-            }
-        }
-        UploadBookData();
-    }, []);
-    return {
-        uploadBookData,
-        isFetching,
-        error,
-        setUploadBookData,
-        setIsFetching,
-        setError,
-    };
+// import { useEffect, useState } from "react";
+export async function UploadGetDataForm() {
+    // const [uploadBookData, setUploadBookData] = useState([]);
+    // const [isFetching, setIsFetching] = useState(false);
+    // const [error, setError] = useState();
+    // useEffect(() => {
+    //     async function UploadBookData() {
+    //         setIsFetching(true);
+    //         try {
+    //             const response = await fetch("http://localhost:3000/upload");
+    //             if (!response.ok) {
+    //                 throw new Error("Fail to get book data form");
+    //             }
+    //             const jsonUploadBookData = await response.json();
+    //             setUploadBookData(jsonUploadBookData);
+    //             setIsFetching(false);
+    //         } catch (error) {
+    //             setError(error.message || "Could not to get book data form");
+    //             setIsFetching(false);
+    //         }
+    //     }
+    //     UploadBookData();
+    // }, []);
+    // return {
+    //     uploadBookData,
+    //     isFetching,
+    //     error,
+    //     setUploadBookData,
+    //     setIsFetching,
+    //     setError,
+    // };
+    const response = await fetch("http://localhost:3000/upload");
+    if (!response.ok) {
+        throw new Error("Fail to get book data form");
+    }
+    const jsonUploadBookData = await response.json();
+    return await jsonUploadBookData;
 }
 export async function UploadPostDataForm(data) {
     try {

@@ -1,34 +1,40 @@
-import { useEffect, useState } from "react";
-export function useWishlistGetBookData() {
-    const [wishlistBookData, setWishlistBookData] = useState([]);
-    const [isFetching, setIsFetching] = useState(false);
-    const [error, setError] = useState();
-    useEffect(() => {
-        async function wishlistBookData() {
-            setIsFetching(true);
-            try {
-                const response = await fetch("http://localhost:3000/wishlist");
-                if (!response.ok) {
-                    throw new Error("Fail to get book data");
-                }
-                const jsonWishlistBookData = await response.json();
-                setWishlistBookData(jsonWishlistBookData);
-                setIsFetching(false);
-            } catch (error) {
-                setError(error.message || "Could not to get book data");
-                setIsFetching(false);
-            }
-        }
-        wishlistBookData();
-    }, []);
-    return {
-        wishlistBookData,
-        isFetching,
-        error,
-        setWishlistBookData,
-        setIsFetching,
-        setError,
-    };
+// import { useEffect, useState } from "react";
+export async function WishlistGetBookData() {
+    // const [wishlistBookData, setWishlistBookData] = useState([]);
+    // const [isFetching, setIsFetching] = useState(false);
+    // const [error, setError] = useState();
+    // useEffect(() => {
+    //     async function wishlistBookData() {
+    //         setIsFetching(true);
+    //         try {
+    //             const response = await fetch("http://localhost:3000/wishlist");
+    //             if (!response.ok) {
+    //                 throw new Error("Fail to get book data");
+    //             }
+    //             const jsonWishlistBookData = await response.json();
+    //             setWishlistBookData(jsonWishlistBookData);
+    //             setIsFetching(false);
+    //         } catch (error) {
+    //             setError(error.message || "Could not to get book data");
+    //             setIsFetching(false);
+    //         }
+    //     }
+    //     wishlistBookData();
+    // }, []);
+    // return {
+    //     wishlistBookData,
+    //     isFetching,
+    //     error,
+    //     setWishlistBookData,
+    //     setIsFetching,
+    //     setError,
+    // };
+    const response = await fetch("http://localhost:3000/wishlist");
+    if (!response.ok) {
+        throw new Error("Fail to get book data");
+    }
+    const jsonWishlistBookData = await response.json();
+    return await jsonWishlistBookData;
 }
 export async function WishlistPostBookData(data) {
     try {

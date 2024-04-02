@@ -10,7 +10,13 @@ body {
   margin: 0;
 }
 * {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
+}
+*::-moz-selection {
+  background: none;
 }
 *::selection {
   background: none;
