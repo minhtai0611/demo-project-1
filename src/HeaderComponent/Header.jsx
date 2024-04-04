@@ -3,9 +3,10 @@ import styled from "./Header.module.css";
 import { Link } from "react-router-dom";
 import FetchBookData from "../FetchBookDataComponent/FetchBookData";
 import { useState } from "react";
-import Search from "../SearchComponent/Search";
+// import Search from "../SearchComponent/Search";
 import { PublishGetBookData } from "../PublishComponent/PublishComponent";
 import { useQuery } from "@tanstack/react-query";
+import Pagination from "../PaginationComponent/Pagination";
 export default function Header() {
     const { data, isError, isPending, isSuccess } = useQuery({
         queryKey: ["api"],
@@ -20,6 +21,20 @@ export default function Header() {
         queryKey: ["publish"],
         queryFn: async () => await PublishGetBookData(),
     });
+    const dataFinal =
+        isSuccess && isPublishSuccess
+            ? [
+                ...publishData.map((bookData) => {
+                    return {
+                        id: bookData.idbook,
+                        title: bookData.titlebook,
+                        authors: bookData.authorbook,
+                        image: bookData.imagebook,
+                    };
+                }),
+                ...data,
+            ]
+            : [];
     // const publishDataMatch = [...publishData.map((bookData) => {
     //     return {
     //         id: bookData.idbook,
@@ -40,23 +55,20 @@ export default function Header() {
         }
     }
     function functionFilterSearch() {
-        [
-            ...publishData.map((bookData) => {
-                return {
-                    id: bookData.idbook,
-                    title: bookData.titlebook,
-                    authors: bookData.authorbook,
-                    image: bookData.imagebook,
-                };
-            }),
-            ...data,
-        ].filter((bookData) =>
+        dataFinal.filter((bookData) =>
             bookData.title.toLowerCase().includes(filterBookQuery.toLowerCase())
         );
     }
     // const filterResult = bookDataListFinal.filter((bookData) =>
     //     bookData.title.toLowerCase().includes(filterBookQuery.toLowerCase())
     // )
+    const [page, setPage] = useState(0);
+    const dataPerPage = 20;
+    const currentData = dataFinal
+        .slice(page * dataPerPage, (page + 1) * dataPerPage)
+        .filter((bookData) =>
+            bookData.title.toLowerCase().includes(filterBookQuery.toLowerCase())
+        );
     return (
         <>
             <header className={styled.header + " " + styled.all}>
@@ -165,20 +177,11 @@ export default function Header() {
                 {isError && isPublishError && <p>Fail to fetch book data</p>}
             </section>
             {isSuccess && isPublishSuccess && (
-                <Search
-                    bookDataList={[
-                        ...publishData.map((bookData) => {
-                            return {
-                                id: bookData.idbook,
-                                title: bookData.titlebook,
-                                authors: bookData.authorbook,
-                                image: bookData.imagebook,
-                            };
-                        }),
-                        ...data,
-                    ].filter((bookData) =>
-                        bookData.title.toLowerCase().includes(filterBookQuery.toLowerCase())
-                    )}
+                <Pagination
+                    page={page}
+                    setPage={setPage}
+                    totalPage={Math.ceil(dataFinal.length / dataPerPage)}
+                    data={currentData}
                 />
             )}
         </>

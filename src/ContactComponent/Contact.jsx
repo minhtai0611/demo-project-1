@@ -1,32 +1,38 @@
 import styled from "./Contact.module.css";
 import HeaderReplica from "../HeaderReplicaComponent/HeaderReplica";
 import ContactDataForm from "../ContactDataFormComponent/ContactDataFormComponent";
-import { useState } from "react";
+// import { useState } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 export default function Contact() {
-    const [contactData, setContactData] = useState();
-    const [isSent, setIsSent] = useState(false);
-    const [error, setError] = useState();
+    const queryClient = useQueryClient();
+    // const [contactData, setContactData] = useState();
+    // const [isSent, setIsSent] = useState(false);
+    // const [error, setError] = useState();
+    const { mutate, isError, isSuccess } = useMutation({
+        mutationFn: async (bookData) => await ContactDataForm(bookData),
+        onSuccess: () => queryClient.invalidateQueries({ queryKey: ["contact"] })
+    });
     async function functionSubmitForm(event) {
         await event.preventDefault();
         const formdata = new FormData(event.target);
         const data = Object.fromEntries(formdata.entries());
-        try {
-            const { responseContact, responseOk } = await ContactDataForm(data);
-            setContactData(responseContact);
-            setIsSent(true);
-            if (!responseOk) {
-                throw new Error("Fail to send data form");
-            }
-        }
-        catch (error) {
-            setError(error.message || "Could not to send data form");
-            setIsSent(false);
-        }
+        // try {
+        //     const { responseContact, responseOk } = await ContactDataForm(data);
+        //     setContactData(responseContact);
+        //     setIsSent(true);
+        //     if (!responseOk) {
+        //         throw new Error("Fail to send data form");
+        //     }
+        // } catch (error) {
+        //     setError(error.message || "Could not to send data form");
+        //     setIsSent(false);
+        // }
+        mutate(data);
     }
-    function functionResetForm() {
-        setContactData();
-        setIsSent(true);
-    }
+    // function functionResetForm() {
+    //     setContactData();
+    //     setIsSent(true);
+    // }
     return (
         <>
             <HeaderReplica />
@@ -34,9 +40,24 @@ export default function Contact() {
                 <p>Contact</p>
             </section>
             <section className={styled.section}>
-                {contactData && isSent && <p className={styled.p + " " + styled["gayathri-bold"] + " " + styled.green}>Your form has been sent successfully</p>}
-                {error && !isSent && <p className={styled.p + " " + styled["gayathri-bold"] + " " + styled.red}>Fail to send your form</p>}
-                {!contactData && isSent && undefined}
+                {isSuccess && (
+                    <p
+                        className={
+                            styled.p + " " + styled["gayathri-bold"] + " " + styled.green
+                        }
+                    >
+                        Your form has been sent successfully
+                    </p>
+                )}
+                {isError && (
+                    <p
+                        className={
+                            styled.p + " " + styled["gayathri-bold"] + " " + styled.red
+                        }
+                    >
+                        Fail to send your form
+                    </p>
+                )}
             </section>
             <section className={styled.section}>
                 <form
@@ -45,8 +66,7 @@ export default function Contact() {
                     }
                     action="/contact"
                     method="post"
-                    onSubmit={(event) => functionSubmitForm(event)}
-                    onReset={() => functionResetForm()}
+                    onSubmit={async (event) => await functionSubmitForm(event)}
                 >
                     <fieldset>
                         <label htmlFor="name">
@@ -130,8 +150,8 @@ export default function Contact() {
                                 type="checkbox"
                                 required
                             />
-                            &nbsp;&nbsp;By checking the mark, you agree to these terms and conditions of
-                            service.
+                            &nbsp;&nbsp;By checking the mark, you agree to these terms and
+                            conditions of service.
                         </label>
                         <div>
                             <input
@@ -151,7 +171,6 @@ export default function Contact() {
                                 required
                             />
                         </div>
-
                     </fieldset>
                 </form>
             </section>

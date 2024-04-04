@@ -1,0 +1,76 @@
+.section {
+  display: flex;
+  width: 100vw;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.button {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: papayawhip;
+  border-radius: 1.3rem;
+  margin: 0 0.9rem 0 0.9rem;
+  padding: 1.5rem 2rem 0.5rem 2rem;
+  width: 1.5rem;
+  height: 2rem;
+  cursor: pointer;
+}
+.button:hover {
+  color: papayawhip;
+  background-color: dodgerblue;
+}
+.break {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0 0.9rem 0 0.9rem;
+  width: 1.5rem;
+  height: 2rem;
+}
+.active {
+  color: gold;
+  background-color: midnightblue;
+}
+.icon {
+  color: papayawhip;
+  background-color: black;
+  font-size: 3rem;
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  margin: 0 0.9rem 0 0.9rem;
+  cursor: pointer;
+}
+.icon:hover {
+  color: dodgerblue;
+  background-color: papayawhip;
+}
+.gayathri-bold {
+  font-family: "Gayathri", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+.p {
+  color: black;
+  font-size: 2.2rem;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.pBreak {
+  color: papayawhip;
+  font-size: 2.2rem;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.disabled {
+  display: none;
+}

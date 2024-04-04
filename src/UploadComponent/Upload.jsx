@@ -6,23 +6,29 @@ import { UploadPostDataForm } from "../UploadDataFormComponent/UploadDataFormCom
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 export default function Upload() {
     const [imageFile, setImageFile] = useState();
+    const queryClient = useQueryClient();
+    const { mutate } = useMutation({
+        mutationFn: async (bookData) => await UploadPostDataForm(bookData),
+        onSuccess: () => queryClient.invalidateQueries({ queryKey: ["upload"] })
+    })
     function functionImageFile(event) {
         setImageFile(() => URL.createObjectURL(event.target.files[0]));
     }
     async function functionSubmitForm(event) {
-        event.preventDefault();
+        await event.preventDefault();
         const formdata = new FormData(event.target);
         const data = Object.fromEntries(formdata.entries());
         data.imageBook = imageFile;
-        try {
-            const response = await UploadPostDataForm(data);
-            if (!response.ok) {
-                throw new Error("Fail to send data form");
-            }
-        }
-        catch (error) {
-            console.log(error.message || "Could not to send data form");
-        }
+        // try {
+        //     const response = await UploadPostDataForm(data);
+        //     if (!response.ok) {
+        //         throw new Error("Fail to send data form");
+        //     }
+        // }
+        // catch (error) {
+        //     console.log(error.message || "Could not to send data form");
+        // }
+        mutate(data);
     }
     return (
         <>
