@@ -7,6 +7,7 @@ import { IconContext } from "react-icons";
 export default function Pagination({ page, setPage, totalPage, data }) {
     return (
         <>
+            {data && <Search bookDataList={data} />}
             <ReactPaginate
                 containerClassName={styled.section}
                 pageClassName={styled.button + " " + styled["gayathri-bold"] + " " + styled.p}
@@ -30,7 +31,6 @@ export default function Pagination({ page, setPage, totalPage, data }) {
                 }
                 disabledClassName={styled.disabled}
             />;
-            <Search bookDataList={data} />
         </>
     )
 }
