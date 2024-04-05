@@ -3,17 +3,15 @@
 import { Link } from "react-router-dom";
 import styled from "./SearchBookItem.module.css";
 import { WishlistPostBookData } from "../WishlistComponent/WishlistComponent";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 export default function SearchBookItem({ bookData }) {
-    async function functionAddToWishlist(bookDataSearch) {
-        try {
-            const response = await WishlistPostBookData(bookDataSearch);
-            if (!response.ok) {
-                throw new Error("Fail to post book data");
-            }
-        }
-        catch (error) {
-            console.log(error.message || "Could not to post book data");
-        }
+    const queryClient = useQueryClient();
+    const { mutate: wishlistDataMutate, } = useMutation({
+        mutationFn: async (bookData) => await WishlistPostBookData(bookData),
+        onSuccess: () => queryClient.invalidateQueries({ queryKey: ["wishlist"] }),
+    });
+    function functionAddToWishlist(bookDataSearch) {
+        return wishlistDataMutate(bookDataSearch);
     }
     return (
         <>
@@ -47,7 +45,7 @@ export default function SearchBookItem({ bookData }) {
                         styled.p + " " + styled["gayathri-bold"] + " " + styled.button
                     }
                     type="button"
-                    onClick={async () => await functionAddToWishlist(bookData)}
+                    onClick={() => functionAddToWishlist(bookData)}
                 >
                     Add to wishlist
                 </button>

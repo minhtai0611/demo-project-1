@@ -5,7 +5,6 @@ export default function Root() {
             <main>
                 <Outlet />
             </main>
-
         </>
     );
 }
