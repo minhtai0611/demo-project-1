@@ -64,8 +64,6 @@ export default function Contact() {
                     className={
                         styled.p + " " + styled["gayathri-bold"] + " " + styled.form
                     }
-                    action="/contact"
-                    method="post"
                     onSubmit={async (event) => await functionSubmitForm(event)}
                 >
                     <fieldset>
