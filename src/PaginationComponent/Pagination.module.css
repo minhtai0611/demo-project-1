@@ -6,7 +6,7 @@
   align-items: center;
   text-align: center;
 }
-.button {
+.button{
   display: flex;
   list-style: none;
   justify-content: center;
@@ -20,11 +20,11 @@
   height: 2rem;
   cursor: pointer;
 }
-.button:hover {
+.button:hover{
   color: papayawhip;
   background-color: dodgerblue;
 }
-.break {
+.break{
   display: flex;
   list-style: none;
   justify-content: center;
@@ -34,11 +34,12 @@
   width: 1.5rem;
   height: 2rem;
 }
-.active {
+.active{
   color: gold;
-  background-color: midnightblue;
+  background-color:midnightblue;
 }
-.icon {
+
+.icon{
   color: papayawhip;
   background-color: black;
   font-size: 3rem;
@@ -48,7 +49,7 @@
   margin: 0 0.9rem 0 0.9rem;
   cursor: pointer;
 }
-.icon:hover {
+.icon:hover{
   color: dodgerblue;
   background-color: papayawhip;
 }
@@ -64,6 +65,13 @@
   align-items: center;
   text-align: center;
 }
+.pActive {
+  color: gold;
+  font-size: 2.2rem;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 .pBreak {
   color: papayawhip;
   font-size: 2.2rem;
@@ -71,6 +79,6 @@
   align-items: center;
   text-align: center;
 }
-.disabled {
+.disabled{
   display: none;
 }

@@ -11,11 +11,11 @@ export default function Pagination({ page, setPage, totalPage, data }) {
             <ReactPaginate
                 containerClassName={styled.section}
                 pageClassName={styled.button + " " + styled["gayathri-bold"] + " " + styled.p}
-                activeClassName={styled.p + " " + styled.active}
+                activeClassName={styled.pActive + " " + styled.active}
                 onPageChange={async (event) => await setPage(event.selected)}
                 forcePage={page}
                 pageCount={totalPage}
-                pageRangeDisplayed={3}
+                pageRangeDisplayed={2}
                 marginPagesDisplayed={2}
                 breakLabel="..."
                 breakClassName={styled.break + " " + styled["gayathri-bold"] + " " + styled.pBreak}

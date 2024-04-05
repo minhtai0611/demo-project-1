@@ -55,7 +55,7 @@ export default function Header() {
         }
     }
     function functionFilterSearch() {
-        dataFinal.filter((bookData) =>
+        currentData.filter((bookData) =>
             bookData.title.toLowerCase().includes(filterBookQuery.toLowerCase())
         );
     }
