@@ -8,7 +8,7 @@ export default function Contact() {
     // const [contactData, setContactData] = useState();
     // const [isSent, setIsSent] = useState(false);
     // const [error, setError] = useState();
-    const { mutate, isError, isSuccess } = useMutation({
+    const { mutate } = useMutation({
         mutationFn: async (bookData) => await ContactDataForm(bookData),
         onSuccess: () => queryClient.invalidateQueries({ queryKey: ["contact"] })
     });
@@ -40,7 +40,7 @@ export default function Contact() {
                 <p>Contact</p>
             </section>
             <section className={styled.section}>
-                {isSuccess && (
+                {/* {isSuccess && (
                     <p
                         className={
                             styled.p + " " + styled["gayathri-bold"] + " " + styled.green
@@ -57,7 +57,7 @@ export default function Contact() {
                     >
                         Fail to send your form
                     </p>
-                )}
+                )} */}
             </section>
             <section className={styled.section}>
                 <form
