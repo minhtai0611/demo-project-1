@@ -12,7 +12,7 @@ export default function Pagination({ page, setPage, totalPage, data }) {
                 containerClassName={styled.section}
                 pageClassName={styled.button + " " + styled["gayathri-bold"] + " " + styled.p}
                 activeClassName={styled.pActive + " " + styled.active}
-                onPageChange={async (event) => await setPage(event.selected)}
+                onPageChange={async (currentPage) => await setPage(currentPage.selected)}
                 forcePage={page}
                 pageCount={totalPage}
                 pageRangeDisplayed={2}
