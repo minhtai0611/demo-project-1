@@ -37,22 +37,34 @@ export async function WishlistGetBookData() {
     return await jsonWishlistBookData;
 }
 export async function WishlistPostBookData(data) {
-    try {
-        const response = await fetch("http://localhost:3000/wishlist", {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
-        if (!response.ok) {
-            throw new Error("Fail to post wishlist book data");
-        }
-        const responseWishlist = await response.json();
-        return responseWishlist;
-    } catch (error) {
-        console.log(error.message || "Could not to post wishlist book data");
+    // try {
+    //     const response = await fetch("http://localhost:3000/wishlist", {
+    //         method: "POST",
+    //         body: JSON.stringify(data),
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //     });
+    //     if (!response.ok) {
+    //         throw new Error("Fail to post wishlist book data");
+    //     }
+    //     const responseWishlist = await response.json();
+    //     return responseWishlist;
+    // } catch (error) {
+    //     console.log(error.message || "Could not to post wishlist book data");
+    // }
+    const response = await fetch("http://localhost:3000/wishlist", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+    if (!response.ok) {
+        throw new Error("Fail to post wishlist book data");
     }
+    const responseWishlist = await response.json();
+    return await responseWishlist;
 }
 export async function WishlistPutBookData(data) {
     try {
@@ -73,20 +85,32 @@ export async function WishlistPutBookData(data) {
     }
 }
 export async function WishlistDeleteBookData(data) {
-    try {
-        const response = await fetch("http://localhost:3000/wishlist", {
-            method: "DELETE",
-            body: JSON.stringify(data),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
-        if (!response.ok) {
-            throw new Error("Fail to delete wishlist book data");
-        }
-        const responseWishlist = await response.json();
-        return responseWishlist;
-    } catch (error) {
-        console.log(error.message || "Could not to delete wishlist book data");
+    // try {
+    //     const response = await fetch("http://localhost:3000/wishlist", {
+    //         method: "DELETE",
+    //         body: JSON.stringify(data),
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //     });
+    //     if (!response.ok) {
+    //         throw new Error("Fail to delete wishlist book data");
+    //     }
+    //     const responseWishlist = await response.json();
+    //     return responseWishlist;
+    // } catch (error) {
+    //     console.log(error.message || "Could not to delete wishlist book data");
+    // }
+    const response = await fetch("http://localhost:3000/wishlist", {
+        method: "DELETE",
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+    if (!response.ok) {
+        throw new Error("Fail to delete wishlist book data");
     }
+    const responseWishlist = await response.json();
+    return await responseWishlist;
 }

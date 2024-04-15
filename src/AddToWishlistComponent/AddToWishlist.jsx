@@ -105,9 +105,7 @@ export default function AddToWishlist() {
                                     styled.p + " " + styled["gayathri-bold"] + " " + styled.button
                                 }
                                 type="button"
-                                onClick={() => {
-                                    functionRemoveFromWishlist(bookData);
-                                }}
+                                onClick={() => functionRemoveFromWishlist(bookData)}
                             >
                                 Remove from wishlist
                             </button>
@@ -139,9 +137,7 @@ export default function AddToWishlist() {
                                     styled.p + " " + styled["gayathri-bold"] + " " + styled.button
                                 }
                                 type="button"
-                                onClick={() => {
-                                    functionPublishFromUpload(bookData);
-                                }}
+                                onClick={() => functionPublishFromUpload(bookData)}
                             >
                                 Publish on platform
                             </button>
@@ -151,9 +147,7 @@ export default function AddToWishlist() {
                                     styled.p + " " + styled["gayathri-bold"] + " " + styled.button
                                 }
                                 type="button"
-                                onClick={() => {
-                                    functionRemoveFromUpload(bookData);
-                                }}
+                                onClick={() => functionRemoveFromUpload(bookData)}
                             >
                                 Remove from uploadlist
                             </button>

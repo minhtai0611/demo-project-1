@@ -28,7 +28,7 @@ export default function Upload() {
         // catch (error) {
         //     console.log(error.message || "Could not to send data form");
         // }
-        mutate(data);
+        return mutate(data);
     }
     return (
         <>

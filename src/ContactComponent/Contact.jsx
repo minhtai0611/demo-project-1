@@ -27,7 +27,7 @@ export default function Contact() {
         //     setError(error.message || "Could not to send data form");
         //     setIsSent(false);
         // }
-        mutate(data);
+        return mutate(data);
     }
     // function functionResetForm() {
     //     setContactData();

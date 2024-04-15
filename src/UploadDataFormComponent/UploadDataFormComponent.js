@@ -85,20 +85,32 @@ export async function UploadPutDataForm(data) {
     }
 }
 export async function UploadDeleteDataForm(data) {
-    try {
-        const response = await fetch("http://localhost:3000/upload", {
-            method: "DELETE",
-            body: JSON.stringify(data),
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
-        if (!response.ok) {
-            throw new Error("Fail to delete data form");
-        }
-        const responseUpload = await response.json();
-        return responseUpload;
-    } catch (error) {
-        console.log(error.message || "Could not to delete data form");
+    // try {
+    //     const response = await fetch("http://localhost:3000/upload", {
+    //         method: "DELETE",
+    //         body: JSON.stringify(data),
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //         },
+    //     });
+    //     if (!response.ok) {
+    //         throw new Error("Fail to delete data form");
+    //     }
+    //     const responseUpload = await response.json();
+    //     return responseUpload;
+    // } catch (error) {
+    //     console.log(error.message || "Could not to delete data form");
+    // }
+    const response = await fetch("http://localhost:3000/upload", {
+        method: "DELETE",
+        body: JSON.stringify(data),
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
+    if (!response.ok) {
+        throw new Error("Fail to delete data form");
     }
+    const responseUpload = await response.json();
+    return await responseUpload;
 }

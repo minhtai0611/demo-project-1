@@ -49,7 +49,7 @@ const getPublishUser = (req, res) => {
         FROM users \
         WHERE NOT EXISTS(SELECT id \
 		FROM dblink('dbname=bookdatadb user=bookdata password=bookdata', \
-        'SELECT id, title, authors, image from bookdata') AS \
+        'SELECT id, title, authors, image FROM bookdata') AS \
         bookdata(id varchar, title varchar, authors varchar, image varchar) \
 		WHERE idbook = id) \
         ORDER BY idbook, id DESC",
