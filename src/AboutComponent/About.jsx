@@ -37,28 +37,27 @@ export default function About() {
                 <table className={styled.table}>
                     <thead>
                         <tr>
-                            <th>Diverse Content</th>
-                            <th>User-Friendly Interface</th>
-                            <th>Personalized Recommendations</th>
+                            <th>Exclusive Content</th>
+                            <th>Author Support</th>
+                            <th>Protect Copyright</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>
-                                Everbook offers a wide selection of ebooks, magazines, and other
-                                literary content across various genres and interests, ensuring
-                                there is something for every reader.
+                                Explore unique literary treasures unavailable elsewhere,
+                                including rare editions, exclusive releases, and original works
+                                from emerging and renowned authors.
                             </td>
                             <td>
-                                With an intuitive interface, navigating Everbook is a breeze.
-                                Easily search, browse, and discover new titles and authors with
-                                convenient filters and categories.
+                                Foster author success through fair compensation
+                                models, promotional opportunities, and a supportive community,
+                                empowering writers to thrive in the digital landscape.
                             </td>
                             <td>
-                                Experience tailored recommendations based on your reading
-                                preferences and browsing history. Discover new favorites and
-                                hidden gems as Everbook helps you explore the vast world of
-                                literature.
+                                Prioritize copyright protection, implementing robust
+                                measures to safeguard authors&amp;#39; intellectual property rights and
+                                ensure ethical distribution practices across its platform.
                             </td>
                         </tr>
                     </tbody>
