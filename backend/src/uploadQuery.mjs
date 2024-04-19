@@ -24,7 +24,7 @@ try {
         CREATE TABLE IF NOT EXISTS users (\
         id SMALLSERIAL PRIMARY KEY, idbook VARCHAR(10) NOT NULL, \
         titlebook VARCHAR(20) NOT NULL, authorbook VARCHAR(20) NOT NULL, \
-        imagebook VARCHAR(1000) NOT NULL, termcondition VARCHAR(2))",
+        imagebook VARCHAR(100) NOT NULL, termcondition VARCHAR(2))",
         (error) => {
             if (error) {
                 throw error;

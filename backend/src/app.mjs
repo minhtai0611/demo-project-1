@@ -48,7 +48,6 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, "../asset")));
 app.use("/image", express.static(path.join(__dirname, "../image")));
 app.use(functionUploadImageFile.single("imageBook"));
-console.log(path.join(__dirname, "../image"));
 app.use(helmet());
 // app.use((req, res, next) => {
 //     res.setHeader("Access-Control-Allow-Origin", "*");
