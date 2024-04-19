@@ -24,7 +24,7 @@ try {
         CREATE TABLE IF NOT EXISTS users (\
         id SMALLSERIAL PRIMARY KEY, idbook VARCHAR(10) NOT NULL, \
         titlebook VARCHAR(20) NOT NULL, authorbook VARCHAR(20) NOT NULL, \
-        imagebook VARCHAR(100) NOT NULL, termcondition VARCHAR(2))",
+        imagebook VARCHAR(1000) NOT NULL, termcondition VARCHAR(2))",
         (error) => {
             if (error) {
                 throw error;
@@ -55,8 +55,9 @@ const getUploadUser = (req, res) => {
         console.log(error.message);
     }
 };
-const createUploadUser = (req, res) => {
-    const { idBook, titleBook, authorBook, imageBook, termCondition } = req.body;
+const createUploadUser = (req, res, next) => {
+    const { idBook, titleBook, authorBook, termCondition } = req.body;
+    const imageBook = req.protocol + '://' + req.get('host') + '/image/' + req.file.filename;
     try {
         pool.query(
             "INSERT INTO users (idbook, titlebook, authorbook, imagebook, termcondition) VALUES ($1, $2, $3, $4, $5) RETURNING *",
@@ -69,7 +70,7 @@ const createUploadUser = (req, res) => {
             }
         );
     } catch (error) {
-        console.log(error.message);
+        return next(error);
     }
 };
 const updateUploadUser = (req, res) => {

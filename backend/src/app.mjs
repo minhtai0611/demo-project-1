@@ -10,22 +10,52 @@ import { postBookDataList } from "./dataQuery.mjs";
 import cors from "cors";
 import helmet from "helmet";
 import { fetchBookDataList, writeBookDataList, readBookDataList } from "./fetchQuery.mjs";
+import multer from "multer";
+import path, { dirname } from "path";
+import { fileURLToPath } from 'url';
+import fileSystem from "node:fs";
+import crypto from "crypto";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
-app.use(express.static("asset"));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
-app.use(helmet());
-
-app.use((req, res, next) => {
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Access-Control-Allow-Methods", "*");
-    res.setHeader("Access-Control-Allow-Headers", "*");
-    next();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const multerStorage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        const filePath = `../image/`;
+        if (!fileSystem.existsSync(path.join(__dirname, filePath))) {
+            fileSystem.mkdirSync(path.join(__dirname, filePath));
+        }
+        cb(null, `image`);
+    },
+    filename: (req, file, cb) => {
+        cb(null, crypto.randomBytes(12).toString("hex") + "-" + file.originalname);
+    }
 });
+// const multerFilter = (req, file, cb) => {
+//     if (file.mimetype === "image/png" || file.mimetype === "image/jpg" || file.mimetype === "image/jpeg") {
+//         cb(null, true);
+//     }
+//     else {
+//         cb(null, false);
+//     }
+// }
+const functionUploadImageFile = multer({ storage: multerStorage });
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(cors());
+app.use(express.static(path.join(__dirname, "../asset")));
+app.use("/image", express.static(path.join(__dirname, "../image")));
+app.use(functionUploadImageFile.single("imageBook"));
+console.log(path.join(__dirname, "../image"));
+app.use(helmet());
+// app.use((req, res, next) => {
+//     res.setHeader("Access-Control-Allow-Origin", "*");
+//     res.setHeader("Access-Control-Allow-Methods", "*");
+//     res.setHeader("Access-Control-Allow-Headers", "*");
+//     next();
+// });
 
 const jsonBookDataList = await fetchBookDataList();
 await writeBookDataList(jsonBookDataList);

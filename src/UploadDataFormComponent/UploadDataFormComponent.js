@@ -55,10 +55,10 @@ export async function UploadPostDataForm(data) {
     // }
     const response = await fetch("http://localhost:3000/upload", {
         method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-            "Content-Type": "application/json",
-        },
+        body: data,
+        // headers: {
+        //     "Content-Type": "multipart/form-data",
+        // },
     });
     if (!response.ok) {
         throw new Error("Fail to post data form");

@@ -1,24 +1,25 @@
 /* eslint-disable react-refresh/only-export-components */
-import { useState } from "react";
+// import { useState } from "react";
 import styled from "./Upload.module.css";
 import HeaderReplica from "../HeaderReplicaComponent/HeaderReplica";
 import { UploadPostDataForm } from "../UploadDataFormComponent/UploadDataFormComponent";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 export default function Upload() {
-    const [imageFile, setImageFile] = useState();
+    // const [imageFile, setImageFile] = useState();
     const queryClient = useQueryClient();
     const { mutate } = useMutation({
         mutationFn: async (bookData) => await UploadPostDataForm(bookData),
-        onSuccess: () => queryClient.invalidateQueries({ queryKey: ["upload"] })
-    })
-    function functionImageFile(event) {
-        setImageFile(() => URL.createObjectURL(event.target.files[0]));
-    }
+        onSuccess: () => queryClient.invalidateQueries({ queryKey: ["upload"] }),
+    });
+    // function functionImageFile(event) {
+    //     setImageFile(() => event.target.files[0]);
+    // }
     async function functionSubmitForm(event) {
         await event.preventDefault();
         const formdata = new FormData(event.target);
-        const data = Object.fromEntries(formdata.entries());
-        data.imageBook = imageFile;
+        // formdata.append("imageBook", imageFile)
+        // const data = Object.fromEntries(formdata.entries());
+        // data.imageBook = imageFile;
         // try {
         //     const response = await UploadPostDataForm(data);
         //     if (!response.ok) {
@@ -28,7 +29,8 @@ export default function Upload() {
         // catch (error) {
         //     console.log(error.message || "Could not to send data form");
         // }
-        return mutate(data);
+        console.log(formdata);
+        return mutate(formdata);
     }
     return (
         <>
@@ -42,6 +44,7 @@ export default function Upload() {
                         styled.p + " " + styled["gayathri-bold"] + " " + styled.form
                     }
                     onSubmit={async (event) => await functionSubmitForm(event)}
+                // encType="multipart/form-data"
                 >
                     <fieldset>
                         <label htmlFor="idBook">
@@ -95,7 +98,7 @@ export default function Upload() {
                                 accept=".png, .jpg, .jpeg"
                                 placeholder="Attach image book file..."
                                 required
-                                onChange={(event) => functionImageFile(event)}
+                            // onChange={(event) => functionImageFile(event)}
                             />
                         </label>
                         <label htmlFor="termCondition">
