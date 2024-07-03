@@ -80,7 +80,7 @@ export default function Upload() {
                                 className={styled.p + " " + styled["gayathri-bold"]}
                                 name="authorBook"
                                 id="authorBook"
-                                type="number"
+                                type="text"
                                 placeholder="Enter author book..."
                                 required
                                 minLength="10"
