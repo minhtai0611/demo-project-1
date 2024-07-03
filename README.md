@@ -1,3 +1,3 @@
-# Online Book Reader App (HTML & CSS & JavaScript & ReactJS)
+# Online Book Reader Website (HTML & CSS & JavaScript & ReactJS)
 
-Book Reader App contains collection of ebooks, magazines and more... and allow readers search various genres and topics that they interest.
+Online Book Reader Website contains collection of ebooks, magazines and more... and allow readers search various genres and topics that they interest.
