@@ -2,11 +2,12 @@ import pkg from "pg";
 
 const { Pool } = pkg;
 const pool = new Pool({
-    user: "wishlistuser",
-    host: "localhost",
+    user: "publishuser",
+    host: "dpg-cq4bg7eehbks73b984k0-a.oregon-postgres.render.com",
     database: "wishlistdb",
-    password: "wishlist",
+    password: "z9zfjKV073Dxu2WSg9APaFUJlcHZZ36Z",
     port: 5432,
+    ssl: true
 });
 try {
     // pool.query(`DROP DATABASE IF EXISTS contactdb`, (error, results) => {
@@ -27,6 +28,7 @@ try {
         image VARCHAR(100) NOT NULL)",
         (error) => {
             if (error) {
+                console.log(error);
                 throw error;
             }
         }
