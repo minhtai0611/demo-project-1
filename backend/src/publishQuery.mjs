@@ -49,7 +49,7 @@ const getPublishUser = (req, res) => {
             "SELECT DISTINCT ON(idbook) * \
         FROM users \
         WHERE NOT EXISTS(SELECT id \
-		FROM dblink('dbname=bookdatadb user=bookdata password=bookdata', \
+		FROM dblink('dbname=bookdatadb user=publishuser password=z9zfjKV073Dxu2WSg9APaFUJlcHZZ36Z', \
         'SELECT id, title, authors, image FROM bookdata') AS \
         bookdata(id varchar, title varchar, authors varchar, image varchar) \
 		WHERE idbook = id) \
