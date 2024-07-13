@@ -1,6 +1,6 @@
 export default async function ContactDataForm(data) {
     // try {
-    //     const response = await fetch("http://localhost:3000/contact", {
+    //     const response = await fetch("https://demo-project-1.onrender.com/contact", {
     //         method: "POST",
     //         body: JSON.stringify(data),
     //         headers: {
@@ -16,7 +16,7 @@ export default async function ContactDataForm(data) {
     // } catch (error) {
     //     console.log(error.message || "Could not to post data form");
     // }
-    const response = await fetch("http://localhost:3000/contact", {
+    const response = await fetch("https://demo-project-1.onrender.com/contact", {
         method: "POST",
         body: JSON.stringify(data),
         headers: {

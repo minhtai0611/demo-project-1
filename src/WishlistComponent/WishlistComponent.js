@@ -7,7 +7,7 @@ export async function WishlistGetBookData() {
     //     async function wishlistBookData() {
     //         setIsFetching(true);
     //         try {
-    //             const response = await fetch("http://localhost:3000/wishlist");
+    //             const response = await fetch("https://demo-project-1.onrender.com/wishlist");
     //             if (!response.ok) {
     //                 throw new Error("Fail to get book data");
     //             }
@@ -29,7 +29,7 @@ export async function WishlistGetBookData() {
     //     setIsFetching,
     //     setError,
     // };
-    const response = await fetch("http://localhost:3000/wishlist");
+    const response = await fetch("https://demo-project-1.onrender.com/wishlist");
     if (!response.ok) {
         throw new Error("Fail to get book data");
     }
@@ -38,7 +38,7 @@ export async function WishlistGetBookData() {
 }
 export async function WishlistPostBookData(data) {
     // try {
-    //     const response = await fetch("http://localhost:3000/wishlist", {
+    //     const response = await fetch("https://demo-project-1.onrender.com/wishlist", {
     //         method: "POST",
     //         body: JSON.stringify(data),
     //         headers: {
@@ -53,7 +53,7 @@ export async function WishlistPostBookData(data) {
     // } catch (error) {
     //     console.log(error.message || "Could not to post wishlist book data");
     // }
-    const response = await fetch("http://localhost:3000/wishlist", {
+    const response = await fetch("https://demo-project-1.onrender.com/wishlist", {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
@@ -68,7 +68,7 @@ export async function WishlistPostBookData(data) {
 }
 export async function WishlistPutBookData(data) {
     try {
-        const response = await fetch("http://localhost:3000/wishlist", {
+        const response = await fetch("https://demo-project-1.onrender.com/wishlist", {
             method: "PUT",
             body: JSON.stringify(data),
             headers: {
@@ -86,7 +86,7 @@ export async function WishlistPutBookData(data) {
 }
 export async function WishlistDeleteBookData(data) {
     // try {
-    //     const response = await fetch("http://localhost:3000/wishlist", {
+    //     const response = await fetch("https://demo-project-1.onrender.com/wishlist", {
     //         method: "DELETE",
     //         body: JSON.stringify(data),
     //         headers: {
@@ -101,7 +101,7 @@ export async function WishlistDeleteBookData(data) {
     // } catch (error) {
     //     console.log(error.message || "Could not to delete wishlist book data");
     // }
-    const response = await fetch("http://localhost:3000/wishlist", {
+    const response = await fetch("https://demo-project-1.onrender.com/wishlist", {
         method: "DELETE",
         body: JSON.stringify(data),
         headers: {

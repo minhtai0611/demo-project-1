@@ -7,7 +7,7 @@ export default async function FetchBookData() {
     //     async function FetchBookData() {
     //         setIsFetching(true);
     //         try {
-    //             const response = await fetch("http://localhost:3000/api");
+    //             const response = await fetch("https://demo-project-1.onrender.com/api");
     //             if (!response.ok) {
     //                 throw new Error("Fail to fetch book data");
     //             }
@@ -36,7 +36,7 @@ export default async function FetchBookData() {
     //     setIsFetching,
     //     setError,
     // };
-    const response = await fetch("http://localhost:3000/api");
+    const response = await fetch("https://demo-project-1.onrender.com/api");
     if (!response.ok) {
         throw new Error("Fail to fetch book data");
     }

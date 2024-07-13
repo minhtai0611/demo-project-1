@@ -7,7 +7,7 @@ export async function UploadGetDataForm() {
     //     async function UploadBookData() {
     //         setIsFetching(true);
     //         try {
-    //             const response = await fetch("http://localhost:3000/upload");
+    //             const response = await fetch("https://demo-project-1.onrender.com/upload");
     //             if (!response.ok) {
     //                 throw new Error("Fail to get book data form");
     //             }
@@ -29,7 +29,7 @@ export async function UploadGetDataForm() {
     //     setIsFetching,
     //     setError,
     // };
-    const response = await fetch("http://localhost:3000/upload");
+    const response = await fetch("https://demo-project-1.onrender.com/upload");
     if (!response.ok) {
         throw new Error("Fail to get book data form");
     }
@@ -38,7 +38,7 @@ export async function UploadGetDataForm() {
 }
 export async function UploadPostDataForm(data) {
     // try {
-    //     const response = await fetch("http://localhost:3000/upload", {
+    //     const response = await fetch("https://demo-project-1.onrender.com/upload", {
     //         method: "POST",
     //         body: JSON.stringify(data),
     //         headers: {
@@ -53,7 +53,7 @@ export async function UploadPostDataForm(data) {
     // } catch (error) {
     //     console.log(error.message || "Could not to post data form");
     // }
-    const response = await fetch("http://localhost:3000/upload", {
+    const response = await fetch("https://demo-project-1.onrender.com/upload", {
         method: "POST",
         body: data,
         // headers: {
@@ -68,7 +68,7 @@ export async function UploadPostDataForm(data) {
 }
 export async function UploadPutDataForm(data) {
     try {
-        const response = await fetch("http://localhost:3000/upload", {
+        const response = await fetch("https://demo-project-1.onrender.com/upload", {
             method: "PUT",
             body: JSON.stringify(data),
             headers: {
@@ -86,7 +86,7 @@ export async function UploadPutDataForm(data) {
 }
 export async function UploadDeleteDataForm(data) {
     // try {
-    //     const response = await fetch("http://localhost:3000/upload", {
+    //     const response = await fetch("https://demo-project-1.onrender.com/upload", {
     //         method: "DELETE",
     //         body: JSON.stringify(data),
     //         headers: {
@@ -101,7 +101,7 @@ export async function UploadDeleteDataForm(data) {
     // } catch (error) {
     //     console.log(error.message || "Could not to delete data form");
     // }
-    const response = await fetch("http://localhost:3000/upload", {
+    const response = await fetch("https://demo-project-1.onrender.com/upload", {
         method: "DELETE",
         body: JSON.stringify(data),
         headers: {

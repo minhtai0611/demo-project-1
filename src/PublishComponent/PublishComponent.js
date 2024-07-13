@@ -7,7 +7,7 @@ export async function PublishGetBookData() {
     //     async function PublishBookDataList() {
     //         setIsFetching(true);
     //         try {
-    //             const response = await fetch("http://localhost:3000/publish");
+    //             const response = await fetch("https://demo-project-1.onrender.com/publish");
     //             if (!response.ok) {
     //                 throw new Error("Fail to get book data");
     //             }
@@ -29,7 +29,7 @@ export async function PublishGetBookData() {
     //     setIsFetching,
     //     setError,
     // };
-    const response = await fetch("http://localhost:3000/publish");
+    const response = await fetch("https://demo-project-1.onrender.com/publish");
     if (!response.ok) {
         throw new Error("Fail to get book data");
     }
@@ -38,7 +38,7 @@ export async function PublishGetBookData() {
 }
 export async function PublishPostBookData(data) {
     // try {
-    //     const response = await fetch("http://localhost:3000/publish", {
+    //     const response = await fetch("https://demo-project-1.onrender.com/publish", {
     //         method: "POST",
     //         body: JSON.stringify(data),
     //         headers: {
@@ -53,7 +53,7 @@ export async function PublishPostBookData(data) {
     // } catch (error) {
     //     console.log(error.message || "Could not to post book data");
     // }
-    const response = await fetch("http://localhost:3000/publish", {
+    const response = await fetch("https://demo-project-1.onrender.com/publish", {
         method: "POST",
         body: JSON.stringify(data),
         headers: {
@@ -68,7 +68,7 @@ export async function PublishPostBookData(data) {
 }
 export async function PublishPutBookData(data) {
     try {
-        const response = await fetch("http://localhost:3000/publish", {
+        const response = await fetch("https://demo-project-1.onrender.com/publish", {
             method: "PUT",
             body: JSON.stringify(data),
             headers: {
@@ -86,7 +86,7 @@ export async function PublishPutBookData(data) {
 }
 export async function PublishDeleteBookData(data) {
     try {
-        const response = await fetch("http://localhost:3000/publish", {
+        const response = await fetch("https://demo-project-1.onrender.com/publish", {
             method: "DELETE",
             body: JSON.stringify(data),
             headers: {
