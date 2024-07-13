@@ -42,9 +42,13 @@ const multerStorage = multer.diskStorage({
 // }
 const functionUploadImageFile = multer({ storage: multerStorage });
 
+const corsOptions = {
+  origin: 'https://demo-project-1-six.vercel.app',
+}
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.static(path.join(__dirname, "../asset")));
 app.use("/image", express.static(path.join(__dirname, "../image")));
 app.use(functionUploadImageFile.single("imageBook"));
